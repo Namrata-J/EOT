@@ -1,3 +1,1 @@
-import { OuterContainer, InnerContainer, LinksContainer } from "./landingPageComponents/";
-
-export { OuterContainer, InnerContainer, LinksContainer };
+export  * as landingPageComp  from "./landingPageComponents/";

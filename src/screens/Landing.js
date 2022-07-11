@@ -1,13 +1,13 @@
 import { Box, Typography } from '@mui/material';
-import { OuterContainer, InnerContainer, LinksContainer } from "../components/";
+import { landingPageComp } from "../components/";
 import { headingVariantForLandingPage, flexCenter } from "../utils/commonStyles";
 import { appIntroLines } from '../constants/landingPageText';
 import logo from "../assets/Logo.png";
 
 const LandingPage = () => {
     return (
-        <OuterContainer>
-            <InnerContainer>
+        <landingPageComp.OuterContainer>
+            <landingPageComp.InnerContainer>
                 <Box
                     component="img"
                     src={logo}
@@ -28,10 +28,10 @@ const LandingPage = () => {
                                 </Box> {eachLine.normalText}
                             </Typography>)
                     }
-                    <LinksContainer />
+                    <landingPageComp.LinksContainer />
                 </div>
-            </InnerContainer>
-        </OuterContainer>
+            </landingPageComp.InnerContainer>
+        </landingPageComp.OuterContainer>
     );
 }
 
