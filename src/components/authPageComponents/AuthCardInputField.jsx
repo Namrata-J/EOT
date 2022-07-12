@@ -4,9 +4,7 @@ import { useAuth } from "../../contexts/";
 
 const AuthCardInputField = ({ inputProps }) => {
 
-    const { handleChange, userSignUpForm } = useAuth();
-
-    console.log(userSignUpForm)
+    const { handleChange } = useAuth();
 
     return (
         <TextField
@@ -18,8 +16,7 @@ const AuthCardInputField = ({ inputProps }) => {
             type={inputProps.inputType}
             variant="outlined"
             size="small"
-            required
-            error />
+            required />
     );
 }
 

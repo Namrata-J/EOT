@@ -21,6 +21,7 @@ const SignUpPage = () => {
                             inputLabel: "Password",
                             inputType: "password"
                         }} />
+                    <authPageComp.AuthSubmitButton text="SignUp" />
                 </Box>
             </authPageComp.AuthCard>
         </authPageComp.AuthPageOuterContainer>

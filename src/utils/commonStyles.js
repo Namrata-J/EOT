@@ -67,3 +67,9 @@ export const authCardInput = {
         color: 'otherColors.white',
     }
 }
+
+export const containedBtn = {
+    width: '100%',
+    mt: 1,
+    backgroundColor: 'primary.dark'
+}
