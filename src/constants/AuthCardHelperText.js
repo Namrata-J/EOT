@@ -5,4 +5,6 @@ export const initialHelperText = {
 
 export const mandatoryFieldText = "Please fill out this field";
 
-export const invalidEmail = "Invalid email address"
+export const invalidEmail = "Invalid email address";
+
+export const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;

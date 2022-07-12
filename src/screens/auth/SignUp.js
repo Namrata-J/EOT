@@ -5,7 +5,7 @@ import { useAuth } from "../../contexts/auth-context";
 
 const SignUpPage = () => {
 
-    const { signUpFormHelperText } = useAuth();
+    const { signUpHelperText } = useAuth();
 
     return (
         <authPageComp.AuthPageOuterContainer>
@@ -14,14 +14,14 @@ const SignUpPage = () => {
                 <Box component="form" sx={{ width: '100%', p: 1 }}>
                     <authPageComp.AuthCardInputField
                         inputProps={{
-                            text: signUpFormHelperText.email,
+                            text: signUpHelperText.email,
                             uniqueId: "SIGNUP_EMAIL",
                             inputLabel: "Email",
                             inputType: "email"
                         }} />
                     <authPageComp.AuthCardInputField
                         inputProps={{
-                            text: signUpFormHelperText.pwd,
+                            text: signUpHelperText.pwd,
                             uniqueId: "SIGNUP_PWD",
                             inputLabel: "Password",
                             inputType: "password"

@@ -1,4 +1,4 @@
-import { initialHelperText, mandatoryFieldText, invalidEmail } from "../constants/AuthCardHelperText";
+import { initialHelperText, mandatoryFieldText, invalidEmail, regex } from "../constants/AuthCardHelperText";
 import React, { useState, createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -9,14 +9,17 @@ const AuthProvider = ({ children }) => {
 
     const [userSignUpForm, setUserSignUpForm] = useState({ userEmail: '', userPwd: '' });
     const [userLogInForm, setUserLogInForm] = useState({ userEmail: '', userPwd: '' });
-    const [signUpFormHelperText, setSignUpFormHelperText] = useState(initialHelperText);
+    const [signUpHelperText, setSignUpHelperText] = useState(initialHelperText);
+    const [logInHelperText, setLogInHelperText] = useState(initialHelperText);
     const navigate = useNavigate();
 
     const errorAttr = (uniqueId, text) => {
         switch (uniqueId) {
             case "SIGNUP_EMAIL":
+            case "LOGIN_EMAIL":
                 return text === '' || text === initialHelperText.email ? false : true
             case "SIGNUP_PWD":
+            case "LOGIN_PWD":
                 return text === '' || text === initialHelperText.pwd ? false : true
             default:
                 return false
@@ -26,17 +29,19 @@ const AuthProvider = ({ children }) => {
     const handleChange = (e, uniqueId) => {
         switch (uniqueId) {
             case "SIGNUP_EMAIL":
-                setSignUpFormHelperText({ ...signUpFormHelperText, email: "" })
+                setSignUpHelperText({ ...signUpHelperText, email: "" })
                 setUserSignUpForm({ ...userSignUpForm, userEmail: e.target.value })
                 break;
             case "SIGNUP_PWD":
-                setSignUpFormHelperText({ ...signUpFormHelperText, pwd: "" })
+                setSignUpHelperText({ ...signUpHelperText, pwd: "" })
                 setUserSignUpForm({ ...userSignUpForm, userPwd: e.target.value })
                 break;
             case "LOGIN_EMAIL":
+                setLogInHelperText({ ...logInHelperText, email: "" })
                 setUserLogInForm({ ...userLogInForm, userEmail: e.target.value })
                 break;
             case "LOGIN_PWD":
+                setLogInHelperText({ ...logInHelperText, pwd: "" })
                 setUserLogInForm({ ...userLogInForm, userPwd: e.target.value })
                 break;
             default:
@@ -47,7 +52,7 @@ const AuthProvider = ({ children }) => {
     const signUpHandler = async () => {
         if (userSignUpForm.userEmail !== '') {
             if (userSignUpForm.userPwd !== '') {
-                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userSignUpForm.userEmail)) {
+                if (regex.test(userSignUpForm.userEmail)) {
                     try {
                         const response = await axios.post(`/api/auth/signup`, {
                             email: userSignUpForm.userEmail,
@@ -61,17 +66,52 @@ const AuthProvider = ({ children }) => {
                         console.log(error)
                     }
                 } else {
-                    setSignUpFormHelperText({ ...signUpFormHelperText, email: invalidEmail })
+                    setSignUpHelperText({ ...signUpHelperText, email: invalidEmail })
                 }
             } else {
-                setSignUpFormHelperText({ ...signUpFormHelperText, pwd: mandatoryFieldText })
+                setSignUpHelperText({ ...signUpHelperText, pwd: mandatoryFieldText })
             }
         } else {
-            setSignUpFormHelperText({ ...signUpFormHelperText, email: mandatoryFieldText })
+            setSignUpHelperText({ ...signUpHelperText, email: mandatoryFieldText })
         }
     }
 
-    return <authContext.Provider value={{ handleChange, signUpHandler, signUpFormHelperText, errorAttr }}>
+    const logInHandler = async () => {
+        if (userSignUpForm.userEmail !== '') {
+            if (userSignUpForm.userPwd !== '') {
+                if (regex.test(userSignUpForm.userEmail)) {
+                    try {
+                        const response = await axios.post(`/api/auth/login`, {
+                            email: userLogInForm.userEmail,
+                            password: userLogInForm.userPwd
+                        });
+                        localStorage.setItem("token", response.data.encodedToken);
+                        if (response.data.encodedToken) {
+                            navigate("/home")
+                        }
+                    } catch (error) {
+                        console.log(error)
+                    }
+                } else {
+                    setLogInHelperText({ ...logInHelperText, email: invalidEmail })
+                }
+            } else {
+                setLogInHelperText({ ...logInHelperText, pwd: mandatoryFieldText })
+            }
+        } else {
+            setLogInHelperText({ ...logInHelperText, email: mandatoryFieldText })
+        }
+    }
+
+    return <authContext.Provider
+        value={{
+            handleChange,
+            signUpHandler,
+            signUpHelperText,
+            errorAttr,
+            logInHandler,
+            logInHelperText
+        }}>
         {children}
     </authContext.Provider>
 }

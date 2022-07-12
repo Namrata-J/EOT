@@ -1,8 +1,12 @@
 import { Box, Link } from '@mui/material';
 import { authPageComp } from "../../components/";
 import { authCardLink } from "../../utils/commonStyles";
+import { useAuth } from "../../contexts/auth-context";
 
 const LogInPage = () => {
+
+    const { logInHelperText } = useAuth();
+
     return (
         <authPageComp.AuthPageOuterContainer>
             <authPageComp.AuthCard>
@@ -10,14 +14,14 @@ const LogInPage = () => {
                 <Box component="form" sx={{ width: '100%', p: 1 }}>
                     <authPageComp.AuthCardInputField
                         inputProps={{
-                            text: "Please enter your email",
+                            text: logInHelperText.email,
                             uniqueId: "LOGIN_EMAIL",
                             inputLabel: "Email",
                             inputType: "email"
                         }} />
                     <authPageComp.AuthCardInputField
                         inputProps={{
-                            text: "Please enter your password",
+                            text: logInHelperText.pwd,
                             uniqueId: "LOGIN_PWD",
                             inputLabel: "Password",
                             inputType: "password"

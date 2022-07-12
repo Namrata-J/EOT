@@ -4,13 +4,13 @@ import { useAuth } from '../../contexts';
 
 const AuthSubmitButton = ({ text }) => {
 
-    const { signUpHandler } = useAuth();
+    const { signUpHandler, logInHandler } = useAuth();
 
     return (
         <Button
             variant="contained"
             sx={containedBtn}
-            onClick={signUpHandler}>
+            onClick={text === "SignUp" ? signUpHandler : logInHandler}>
             {text}
         </Button>
     );
