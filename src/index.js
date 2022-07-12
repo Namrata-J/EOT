@@ -15,12 +15,12 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <AppThemeProvider>
-      <AuthProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+      <AppThemeProvider>
+        <AuthProvider>
           <App />
-        </BrowserRouter>
-      </AuthProvider>
-    </AppThemeProvider>
+        </AuthProvider>
+      </AppThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

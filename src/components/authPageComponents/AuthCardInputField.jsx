@@ -4,10 +4,11 @@ import { useAuth } from "../../contexts/";
 
 const AuthCardInputField = ({ inputProps }) => {
 
-    const { handleChange } = useAuth();
+    const { handleChange, errorAttr } = useAuth();
 
     return (
         <TextField
+            error={errorAttr(inputProps.uniqueId, inputProps.text)}
             onChange={(e) => handleChange(e, inputProps.uniqueId)}
             sx={authCardInput}
             helperText={inputProps.text}

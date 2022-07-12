@@ -62,6 +62,8 @@ export const authCardHeading = {
 
 export const authCardInput = {
     width: '100%',
+    mt: 1,
+    mb: 1,
     input: {
         backgroundColor: 'primary.main',
         color: 'otherColors.white',
