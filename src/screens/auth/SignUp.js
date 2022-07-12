@@ -1,5 +1,6 @@
-import { Box } from '@mui/material';
+import { Box, Link } from '@mui/material';
 import { authPageComp } from "../../components/";
+import { authCardLink } from "../../utils/commonStyles";
 
 const SignUpPage = () => {
     return (
@@ -22,6 +23,11 @@ const SignUpPage = () => {
                             inputType: "password"
                         }} />
                     <authPageComp.AuthSubmitButton text="SignUp" />
+                    <Link
+                        href="/login"
+                        sx={authCardLink}>
+                        Already have an account:-)
+                    </Link>
                 </Box>
             </authPageComp.AuthCard>
         </authPageComp.AuthPageOuterContainer>

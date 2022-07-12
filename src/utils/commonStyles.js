@@ -73,3 +73,11 @@ export const containedBtn = {
     mt: 1,
     backgroundColor: 'primary.dark'
 }
+
+export const authCardLink = {
+    color: 'otherColors.lightGray',
+    display: 'block',
+    fontFamily: 'Gruppo',
+    textAlign: 'center',
+    mt: 1
+}
