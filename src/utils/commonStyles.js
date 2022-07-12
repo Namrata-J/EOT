@@ -46,3 +46,24 @@ export const headingVariantForLandingPage = {
 export const landingPageBtn = {
     fontSize: { xs: 'x-small', sm: 'small' }
 }
+
+export const authCard = {
+    backgroundColor: 'primary.light',
+    p: 1.5,
+    color: 'otherColors.lightestGray',
+    width: '20rem'
+}
+
+export const authCardHeading = {
+    fontWeight: 'bold',
+    color: 'otherColors.lightestGray',
+    textAlign: 'center'
+}
+
+export const authCardInput = {
+    width: '100%',
+    input: {
+        backgroundColor: 'primary.main',
+        color: 'otherColors.white',
+    }
+}
