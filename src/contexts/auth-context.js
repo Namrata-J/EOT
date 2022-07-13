@@ -103,6 +103,21 @@ const AuthProvider = ({ children }) => {
         }
     }
 
+    const guestLogInHandler = async () => {
+        try {
+            const response = await axios.post(`/api/auth/login`, {
+                email: "adarshbalika@neog.camp",
+                password: "adarshBalika123",
+            });
+            localStorage.setItem("token", response.data.encodedToken);
+            if (response.data.encodedToken) {
+                navigate("/home")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return <authContext.Provider
         value={{
             handleChange,
@@ -110,7 +125,8 @@ const AuthProvider = ({ children }) => {
             signUpHelperText,
             errorAttr,
             logInHandler,
-            logInHelperText
+            logInHelperText,
+            guestLogInHandler
         }}>
         {children}
     </authContext.Provider>
