@@ -7,4 +7,5 @@ export const mandatoryFieldText = "Please fill out this field";
 
 export const invalidEmail = "Invalid email address";
 
+//eslint-disable-next-line
 export const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
