@@ -1,3 +1,4 @@
+import { RequiresAuth } from "../components/";
 import { Routes, Route } from "react-router-dom";
 import { LandingPage, HomePage, ExplorePage, BookmarkPage, NotificationPage, ProfilePage, Auth } from "../screens/";
 
@@ -6,14 +7,14 @@ const RouteComp = () => {
         <div>
             <Routes>
                 <Route path="/" element={<LandingPage />} />
-                <Route path="/home" element={<HomePage />} />
-                <Route path="/explore" element={<ExplorePage />} />
-                <Route path="/bookmark" element={<BookmarkPage />} />
-                <Route path="/notification" element={<NotificationPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/home" element={<RequiresAuth><HomePage /></RequiresAuth>} />
+                <Route path="/explore" element={<RequiresAuth><ExplorePage /></RequiresAuth>} />
+                <Route path="/bookmark" element={<RequiresAuth><BookmarkPage /></RequiresAuth>} />
+                <Route path="/notification" element={<RequiresAuth><NotificationPage /></RequiresAuth>} />
+                <Route path="/profile" element={<RequiresAuth><ProfilePage /></RequiresAuth>} />
                 <Route path="/signup" element={<Auth.SignUpPage />} />
                 <Route path="/login" element={<Auth.LogInPage />} />
-                <Route path="/logout" element={<Auth.LogOutPage />} />
+                <Route path="/logout" element={<RequiresAuth><Auth.LogOutPage /></RequiresAuth>} />
             </Routes>
         </div>
     );
