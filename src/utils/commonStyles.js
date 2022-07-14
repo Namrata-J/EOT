@@ -83,3 +83,8 @@ export const authCardLink = {
     textAlign: 'center',
     mt: 1
 }
+
+export const logOutBtnContainer = {
+    display: 'flex',
+    justifyContent: 'space-around'
+}

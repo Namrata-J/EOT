@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
     const [userLogInForm, setUserLogInForm] = useState({ userEmail: '', userPwd: '' });
     const [signUpHelperText, setSignUpHelperText] = useState(initialHelperText);
     const [logInHelperText, setLogInHelperText] = useState(initialHelperText);
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const navigate = useNavigate();
 
     const errorAttr = (uniqueId, text) => {
@@ -60,6 +61,7 @@ const AuthProvider = ({ children }) => {
                         });
                         localStorage.setItem("token", response.data.encodedToken);
                         if (response.data.encodedToken) {
+                            setIsUserLoggedIn(true)
                             navigate("/home")
                         }
                     } catch (error) {
@@ -87,6 +89,7 @@ const AuthProvider = ({ children }) => {
                         });
                         localStorage.setItem("token", response.data.encodedToken);
                         if (response.data.encodedToken) {
+                            setIsUserLoggedIn(true)
                             navigate("/home")
                         }
                     } catch (error) {
@@ -111,6 +114,7 @@ const AuthProvider = ({ children }) => {
             });
             localStorage.setItem("token", response.data.encodedToken);
             if (response.data.encodedToken) {
+                setIsUserLoggedIn(true)
                 navigate("/home")
             }
         } catch (error) {
@@ -126,7 +130,9 @@ const AuthProvider = ({ children }) => {
             errorAttr,
             logInHandler,
             logInHelperText,
-            guestLogInHandler
+            guestLogInHandler,
+            isUserLoggedIn,
+            setIsUserLoggedIn
         }}>
         {children}
     </authContext.Provider>
