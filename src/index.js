@@ -1,11 +1,13 @@
-import React from "react";
-import { createRoot } from 'react-dom/client';
 import "./index.css";
+import React from "react";
 import { App } from "./App";
 import { makeServer } from "./server";
+import { Provider } from "react-redux";
+import { store } from "./redux/app/store";
+import { AuthProvider } from "./contexts/";
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
 import { AppThemeProvider } from "./providers/AppThemeProvider";
-import { AuthProvider } from "./contexts/";
 
 // Call make Server
 makeServer();
@@ -16,11 +18,13 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AppThemeProvider>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
-      </AppThemeProvider>
+      <Provider store={store}>
+        <AppThemeProvider>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </AppThemeProvider>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
