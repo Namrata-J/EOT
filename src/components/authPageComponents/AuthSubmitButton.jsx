@@ -21,6 +21,7 @@ const AuthSubmitButton = ({ text }) => {
                 navigate(location?.state?.from?.pathname, { replace: true }) :
                 navigate("/home", { replace: true })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isUserLoggedIn]);
 
     return (
