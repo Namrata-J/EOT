@@ -3,7 +3,7 @@ import {
     invalidEmail,
     mandatoryFieldText,
     regex
-} from "../../../constants/AuthCardHelperText";
+} from "../../../constants/authCardHelperText";
 import {
     setSignUpEmailHelperText,
     setSignUpPwdHelperText,
