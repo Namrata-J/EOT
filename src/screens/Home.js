@@ -1,6 +1,10 @@
+import { PageContainer } from "../components/";
+
 const HomePage = () => {
     return (
-        <div>HomePage</div>
+        <PageContainer>
+            homepage
+        </PageContainer>
     );
 }
 
