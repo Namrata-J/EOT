@@ -1,5 +1,5 @@
 import { Box, Link } from '@mui/material';
-import { authPageComp, PageContainer } from "../../components/";
+import { authPageComp, utilComp } from "../../components/";
 import { authCardLink } from "../../utils/commonStyles";
 import { useSelector } from 'react-redux';
 
@@ -8,7 +8,7 @@ const SignUpPage = () => {
     const { signUpHelperText } = useSelector((store) => store.authHelperText)
 
     return (
-        <PageContainer>
+        <utilComp.PageContainer>
             <authPageComp.AuthCard>
                 <authPageComp.AuthCardHeading cardHeading="SignUp" />
                 <Box component="form" sx={{ width: '100%', p: 1 }}>
@@ -35,7 +35,7 @@ const SignUpPage = () => {
                     </Link>
                 </Box>
             </authPageComp.AuthCard>
-        </PageContainer>
+        </utilComp.PageContainer>
     );
 }
 

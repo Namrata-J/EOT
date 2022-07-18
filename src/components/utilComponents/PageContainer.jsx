@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { fullScreen, flexCenter } from "../utils/commonStyles";
+import { fullScreen, flexCenter } from "../../utils/commonStyles";
 
 const PageContainer = ({ children }) => {
     return (

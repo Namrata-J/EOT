@@ -1,10 +1,10 @@
-import { PageContainer } from "../components/";
+import { utilComp } from "../components/";
 
 const HomePage = () => {
     return (
-        <PageContainer>
+        <utilComp.PageContainer>
             homepage
-        </PageContainer>
+        </utilComp.PageContainer>
     );
 }
 

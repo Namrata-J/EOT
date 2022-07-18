@@ -1,7 +1,7 @@
 import { logoutHandler } from "../../redux/features/authentication/authSlice";
 import { logOutBtnContainer, containedBtn } from "../../utils/commonStyles";
 import { Button, Typography } from '@mui/material';
-import { authPageComp, PageContainer } from "../../components/";
+import { authPageComp, utilComp } from "../../components/";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 
@@ -11,7 +11,7 @@ const LogOutPage = () => {
     const dispatch = useDispatch();
 
     return (
-        <PageContainer>
+        <utilComp.PageContainer>
             <authPageComp.AuthCard sx={logOutBtnContainer}>
                 <authPageComp.AuthCardHeading cardHeading="LogOut" />
                 <Typography sx={{ textAlign: 'center' }}>
@@ -28,7 +28,7 @@ const LogOutPage = () => {
                     onClick={() => navigate("/home")}>Cancel
                 </Button>
             </authPageComp.AuthCard>
-        </PageContainer>
+        </utilComp.PageContainer>
     );
 }
 
