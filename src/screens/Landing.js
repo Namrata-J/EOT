@@ -16,8 +16,9 @@ const LandingPage = () => {
                     }} />
                 <div sx={flexCenter}>
                     {
-                        appIntroLines.map((eachLine) =>
+                        appIntroLines.map((eachLine, index) =>
                             <Typography
+                                key={index}
                                 variant="body1"
                                 sx={{
                                     fontSize: { xs: 'xx-small', md: 'small' }

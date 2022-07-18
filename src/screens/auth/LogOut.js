@@ -1,13 +1,14 @@
+import { logoutHandler } from "../../redux/features/authentication/authSlice";
+import { logOutBtnContainer, containedBtn } from "../../utils/commonStyles";
 import { Button, Typography } from '@mui/material';
 import { authPageComp } from "../../components/";
-import { useAuth } from "../../contexts/auth-context";
 import { useNavigate } from "react-router-dom";
-import { logOutBtnContainer, containedBtn } from "../../utils/commonStyles";
+import { useDispatch } from 'react-redux';
 
 const LogOutPage = () => {
 
-    const { setIsUserLoggedIn } = useAuth();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     return (
         <authPageComp.AuthPageOuterContainer>
@@ -19,7 +20,7 @@ const LogOutPage = () => {
                 <Button
                     variant="contained"
                     sx={containedBtn}
-                    onClick={() => { setIsUserLoggedIn(false); navigate("/") }}>LogOut
+                    onClick={() => { dispatch(logoutHandler()); navigate("/") }}>LogOut
                 </Button>
                 <Button
                     variant="contained"

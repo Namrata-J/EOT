@@ -1,5 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { reducer as authReducer } from "../features/authentication/authSlice";
+import { reducer as helperTextReducer } from "../features/authentication/helperTextSlice";
 
 export const store = configureStore({
-    reducer: {},
+    reducer: {
+        authHelperText: helperTextReducer,
+        auth: authReducer
+    },
 });
