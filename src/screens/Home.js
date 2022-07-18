@@ -3,7 +3,7 @@ import { utilComp } from "../components/";
 const HomePage = () => {
     return (
         <utilComp.PageContainer>
-            homepage
+            <utilComp.Header />
         </utilComp.PageContainer>
     );
 }
