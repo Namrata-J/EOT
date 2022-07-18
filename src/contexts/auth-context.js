@@ -1,4 +1,4 @@
-import { initialHelperText } from "../constants/AuthCardHelperText";
+import { initialHelperText } from "../constants/authCardHelperText";
 import React, { useState, createContext, useContext } from "react";
 import { useDispatch } from "react-redux";
 import {

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { initialHelperText } from "../../../constants/AuthCardHelperText";
+import { initialHelperText } from "../../../constants/authCardHelperText";
 
 const initialState = {
     signUpHelperText: initialHelperText,
