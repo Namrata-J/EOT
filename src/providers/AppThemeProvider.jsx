@@ -13,7 +13,8 @@ const theme = createTheme({
             lightestGray: '#d5d3db',
             lightGray: '#9c9aa8',
             gray: '#56505a',
-            white: '#ffffff'
+            white: '#ffffff',
+            contradictory: '#9c5f64'
         }
     },
     typography: {
