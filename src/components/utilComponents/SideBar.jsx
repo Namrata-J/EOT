@@ -10,7 +10,7 @@ const SideBar = () => {
 
     useEffect(() => {
         dispatch(getSelectedUser(userId))
-    }, [userId]);
+    }, [userId, dispatch]);
 
     return (
         <SideBarComp.SideBarContainer>

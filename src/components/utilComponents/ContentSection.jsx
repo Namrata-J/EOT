@@ -4,7 +4,8 @@ const ContentSection = () => {
     return (
         <Box
             sx={{
-                overflow: 'scroll',
+                overflowY: 'scroll',
+                scrollbarWidth: 'none',
                 width: '45rem',
                 ml: '2rem',
                 mr: '2rem'
