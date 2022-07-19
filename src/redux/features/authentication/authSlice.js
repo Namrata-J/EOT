@@ -12,13 +12,15 @@ import {
 } from "./helperTextSlice";
 import axios from "axios";
 
-const userLogInDetails = localStorage.getItem("token");
+const userLogInToken = localStorage.getItem("token");
+const userLogInId = localStorage.getItem("loggedInUserId");
 
 const initialState = {
     error: "",
     loading: false,
-    encodedToken: userLogInDetails ? userLogInDetails : "",
-    isUserLoggedIn: userLogInDetails ? true : false,
+    userId: userLogInId ? userLogInId : "",
+    encodedToken: userLogInToken ? userLogInToken : "",
+    isUserLoggedIn: userLogInToken ? true : false,
 };
 
 const signUpHandler = createAsyncThunk("auth/signUp", async ({ userEmail, userPwd }, thunkAPI) => {
@@ -31,6 +33,7 @@ const signUpHandler = createAsyncThunk("auth/signUp", async ({ userEmail, userPw
                         password: userPwd
                     });
                     localStorage.setItem("token", response.data.encodedToken);
+                    localStorage.setItem("loggedInUserId", response.data.createdUser._id);
                     return response.data;
                 } catch (error) {
                     console.log("ERROR OCCURRED");
@@ -57,6 +60,7 @@ const logInHandler = createAsyncThunk("auth/logIn", async ({ userEmail, userPwd 
                         password: userPwd
                     });
                     localStorage.setItem("token", response.data.encodedToken);
+                    localStorage.setItem("loggedInUserId", response.data.foundUser._id);
                     return response.data
                 } catch (error) {
                     console.log("ERROR OCCURRED");
@@ -76,10 +80,11 @@ const logInHandler = createAsyncThunk("auth/logIn", async ({ userEmail, userPwd 
 const guestLogInHandler = createAsyncThunk("auth/guestLogIn", async (thunkAPI) => {
     try {
         const response = await axios.post(`/api/auth/login`, {
-            email: "adarshbalika@neog.camp",
+            email: "adarshbalika@gmail.com",
             password: "adarshBalika123",
         });
         localStorage.setItem("token", response.data.encodedToken);
+        localStorage.setItem("loggedInUserId", response.data.foundUser._id);
         return response.data
     } catch (error) {
         console.log("ERROR OCCURRED");
@@ -92,9 +97,11 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         logoutHandler: (state) => {
+            state.userId = ""
             state.encodedToken = ""
             state.isUserLoggedIn = false
             localStorage.removeItem("token")
+            localStorage.removeItem("loggedInUserId")
         }
     },
     extraReducers: {
@@ -103,11 +110,13 @@ const authSlice = createSlice({
         },
         [signUpHandler.fulfilled]: (state, action) => {
             state.loading = false
+            state.userId = action.payload.createdUser._id
             state.isUserLoggedIn = action.payload.encodedToken ? true : false
             state.encodedToken = action.payload.encodedToken ? action.payload.encodedToken : ""
         },
         [signUpHandler.rejected]: (state, action) => {
             state.loading = false
+            state.userId = ""
             state.encodedToken = ""
             state.isUserLoggedIn = false
             state.error = action.error.message
@@ -117,6 +126,7 @@ const authSlice = createSlice({
         },
         [logInHandler.fulfilled]: (state, action) => {
             state.loading = false
+            state.userId = action.payload.foundUser._id
             state.isUserLoggedIn = action.payload.encodedToken ? true : false
             state.encodedToken = action.payload.encodedToken ? action.payload.encodedToken : ""
         },
@@ -131,6 +141,7 @@ const authSlice = createSlice({
         },
         [guestLogInHandler.fulfilled]: (state, action) => {
             state.loading = false
+            state.userId = action.payload.foundUser._id
             state.isUserLoggedIn = action.payload.encodedToken ? true : false
             state.encodedToken = action.payload.encodedToken ? action.payload.encodedToken : ""
         },
