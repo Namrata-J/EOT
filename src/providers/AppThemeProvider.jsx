@@ -10,6 +10,8 @@ const theme = createTheme({
             main: '#000000'
         },
         otherColors: {
+            lightGreen: '#85b53e',
+            lightPurple: '#8041b0',
             lightestGray: '#d5d3db',
             lightGray: '#9c9aa8',
             gray: '#56505a',

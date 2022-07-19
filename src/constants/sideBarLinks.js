@@ -1,10 +1,8 @@
-import {
-    HomeTwoToneIcon,
-    RocketTwoToneIcon,
-    BookmarkTwoToneIcon,
-    AccountCircleTwoToneIcon,
-    NotificationsNoneTwoToneIcon
-} from '@mui/icons-material';
+import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
+import RocketTwoToneIcon from '@mui/icons-material/RocketTwoTone';
+import BookmarkTwoToneIcon from '@mui/icons-material/BookmarkTwoTone';
+import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
+import NotificationsNoneTwoToneIcon from '@mui/icons-material/NotificationsNoneTwoTone';
 
 export const sideBarLinks = [
     {

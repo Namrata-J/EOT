@@ -33,22 +33,18 @@ const AuthProvider = ({ children }) => {
         switch (uniqueId) {
             case "SIGNUP_EMAIL":
                 dispatch(setSignUpEmailHelperText(""))
-                // setSignUpHelperText({ ...signUpHelperText, email: "" })
                 setUserSignUpForm({ ...userSignUpForm, userEmail: e.target.value })
                 break;
             case "SIGNUP_PWD":
                 dispatch(setSignUpPwdHelperText(""))
-                // setSignUpHelperText({ ...signUpHelperText, pwd: "" })
                 setUserSignUpForm({ ...userSignUpForm, userPwd: e.target.value })
                 break;
             case "LOGIN_EMAIL":
                 dispatch(setLogInEmailHelperText(""))
-                // setLogInHelperText({ ...logInHelperText, email: "" })
                 setUserLogInForm({ ...userLogInForm, userEmail: e.target.value })
                 break;
             case "LOGIN_PWD":
                 dispatch(setLogInPwdHelperText(""))
-                // setLogInHelperText({ ...logInHelperText, pwd: "" })
                 setUserLogInForm({ ...userLogInForm, userPwd: e.target.value })
                 break;
             default:

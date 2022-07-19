@@ -16,7 +16,6 @@ const AuthSubmitButton = ({ text }) => {
 
     useEffect(() => {
         if (isUserLoggedIn) {
-            console.log("hi")
             location?.state?.from?.pathname ?
                 navigate(location?.state?.from?.pathname, { replace: true }) :
                 navigate("/home", { replace: true })
