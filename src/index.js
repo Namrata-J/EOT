@@ -4,7 +4,7 @@ import { App } from "./App";
 import { makeServer } from "./server";
 import { Provider } from "react-redux";
 import { store } from "./redux/app/store";
-import { AuthProvider, SideBarProvider } from "./contexts/";
+import { AuthProvider, SideBarProvider, HeaderProvider } from "./contexts/";
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
 import { AppThemeProvider } from "./providers/AppThemeProvider";
@@ -22,7 +22,9 @@ root.render(
         <AppThemeProvider>
           <AuthProvider>
             <SideBarProvider>
-              <App />
+              <HeaderProvider>
+                <App />
+              </HeaderProvider>
             </SideBarProvider>
           </AuthProvider>
         </AppThemeProvider>

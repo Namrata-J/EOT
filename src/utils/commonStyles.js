@@ -107,14 +107,14 @@ export const textAlignment = {
 
 export const boxSize = {
     maxWidth: "100%",
-    height: "3.5rem",
+    height: { xs: "3.3rem", md: "3.5rem" },
 }
 
 export const boxSpacing = {
-    borderRadius: 8,
-    m: 1,
-    p: 1,
-    gap: 0.5
+    borderRadius: { xs: 2, md: 4, lg: 8 },
+    m: { xs: 0.5, md: 1 },
+    p: { xs: 0.8, md: 1 },
+    gap: { xs: 0.8, sm: 0.5 }
 }
 
 export const boxText = {
