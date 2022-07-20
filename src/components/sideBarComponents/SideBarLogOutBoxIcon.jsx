@@ -16,7 +16,7 @@ const SideBarLogOutBoxIcon = () => {
                     cursor: 'pointer'
                 }
             }}
-            onClick={() => handleSideBarLogoutPopupDisplay()} />
+            onClick={handleSideBarLogoutPopupDisplay} />
     );
 }
 

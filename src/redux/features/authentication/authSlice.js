@@ -158,9 +158,3 @@ export { signUpHandler, logInHandler, guestLogInHandler };
 const { reducer, actions } = authSlice;
 export const { logoutHandler } = actions;
 export { reducer };
-
-
-
-
-
-
