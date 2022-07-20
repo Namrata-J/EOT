@@ -1,7 +1,12 @@
-import { initialHelperText, mandatoryFieldText, invalidEmail, regex } from "../constants/AuthCardHelperText";
-import React, { useState, createContext, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { initialHelperText } from "../constants/authCardHelperText";
+import { useState, createContext, useContext } from "react";
+import { useDispatch } from "react-redux";
+import {
+    setSignUpEmailHelperText,
+    setSignUpPwdHelperText,
+    setLogInEmailHelperText,
+    setLogInPwdHelperText
+} from "../redux/features/authentication/helperTextSlice";
 
 const authContext = createContext(null);
 
@@ -9,10 +14,7 @@ const AuthProvider = ({ children }) => {
 
     const [userSignUpForm, setUserSignUpForm] = useState({ userEmail: '', userPwd: '' });
     const [userLogInForm, setUserLogInForm] = useState({ userEmail: '', userPwd: '' });
-    const [signUpHelperText, setSignUpHelperText] = useState(initialHelperText);
-    const [logInHelperText, setLogInHelperText] = useState(initialHelperText);
-    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const errorAttr = (uniqueId, text) => {
         switch (uniqueId) {
@@ -30,19 +32,19 @@ const AuthProvider = ({ children }) => {
     const handleChange = (e, uniqueId) => {
         switch (uniqueId) {
             case "SIGNUP_EMAIL":
-                setSignUpHelperText({ ...signUpHelperText, email: "" })
+                dispatch(setSignUpEmailHelperText(""))
                 setUserSignUpForm({ ...userSignUpForm, userEmail: e.target.value })
                 break;
             case "SIGNUP_PWD":
-                setSignUpHelperText({ ...signUpHelperText, pwd: "" })
+                dispatch(setSignUpPwdHelperText(""))
                 setUserSignUpForm({ ...userSignUpForm, userPwd: e.target.value })
                 break;
             case "LOGIN_EMAIL":
-                setLogInHelperText({ ...logInHelperText, email: "" })
+                dispatch(setLogInEmailHelperText(""))
                 setUserLogInForm({ ...userLogInForm, userEmail: e.target.value })
                 break;
             case "LOGIN_PWD":
-                setLogInHelperText({ ...logInHelperText, pwd: "" })
+                dispatch(setLogInPwdHelperText(""))
                 setUserLogInForm({ ...userLogInForm, userPwd: e.target.value })
                 break;
             default:
@@ -50,89 +52,12 @@ const AuthProvider = ({ children }) => {
         }
     }
 
-    const signUpHandler = async () => {
-        if (userSignUpForm.userEmail !== '') {
-            if (userSignUpForm.userPwd !== '') {
-                if (regex.test(userSignUpForm.userEmail)) {
-                    try {
-                        const response = await axios.post(`/api/auth/signup`, {
-                            email: userSignUpForm.userEmail,
-                            password: userSignUpForm.userPwd
-                        });
-                        localStorage.setItem("token", response.data.encodedToken);
-                        if (response.data.encodedToken) {
-                            setIsUserLoggedIn(true)
-                            navigate("/home")
-                        }
-                    } catch (error) {
-                        console.log(error)
-                    }
-                } else {
-                    setSignUpHelperText({ ...signUpHelperText, email: invalidEmail })
-                }
-            } else {
-                setSignUpHelperText({ ...signUpHelperText, pwd: mandatoryFieldText })
-            }
-        } else {
-            setSignUpHelperText({ ...signUpHelperText, email: mandatoryFieldText })
-        }
-    }
-
-    const logInHandler = async () => {
-        if (userSignUpForm.userEmail !== '') {
-            if (userSignUpForm.userPwd !== '') {
-                if (regex.test(userSignUpForm.userEmail)) {
-                    try {
-                        const response = await axios.post(`/api/auth/login`, {
-                            email: userLogInForm.userEmail,
-                            password: userLogInForm.userPwd
-                        });
-                        localStorage.setItem("token", response.data.encodedToken);
-                        if (response.data.encodedToken) {
-                            setIsUserLoggedIn(true)
-                            navigate("/home")
-                        }
-                    } catch (error) {
-                        console.log(error)
-                    }
-                } else {
-                    setLogInHelperText({ ...logInHelperText, email: invalidEmail })
-                }
-            } else {
-                setLogInHelperText({ ...logInHelperText, pwd: mandatoryFieldText })
-            }
-        } else {
-            setLogInHelperText({ ...logInHelperText, email: mandatoryFieldText })
-        }
-    }
-
-    const guestLogInHandler = async () => {
-        try {
-            const response = await axios.post(`/api/auth/login`, {
-                email: "adarshbalika@neog.camp",
-                password: "adarshBalika123",
-            });
-            localStorage.setItem("token", response.data.encodedToken);
-            if (response.data.encodedToken) {
-                setIsUserLoggedIn(true)
-                navigate("/home")
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     return <authContext.Provider
         value={{
+            userSignUpForm,
+            userLogInForm,
             handleChange,
-            signUpHandler,
-            signUpHelperText,
             errorAttr,
-            logInHandler,
-            logInHelperText,
-            guestLogInHandler,
-            isUserLoggedIn,
-            setIsUserLoggedIn
         }}>
         {children}
     </authContext.Provider>

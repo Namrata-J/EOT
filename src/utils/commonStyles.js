@@ -20,6 +20,12 @@ export const flexBetweenVariant1 = {
     justifyContent: 'space-around'
 }
 
+export const flexBetweenVariant2 = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between"
+}
+
 export const fullScreen = {
     width: '100%',
     height: '100vh'
@@ -87,4 +93,31 @@ export const authCardLink = {
 export const logOutBtnContainer = {
     display: 'flex',
     justifyContent: 'space-around'
+}
+
+export const boxColor = {
+    backgroundColor: 'primary.dark',
+    color: 'otherColors.white',
+}
+
+export const textAlignment = {
+    fontFamily: 'Gruppo',
+    textAlign: "center"
+}
+
+export const boxSize = {
+    maxWidth: "100%",
+    height: "3.5rem",
+}
+
+export const boxSpacing = {
+    borderRadius: 8,
+    m: 1,
+    p: 1,
+    gap: 0.5
+}
+
+export const boxText = {
+    color: 'otherColors.lightGray',
+    fontWeight: 'bold'
 }

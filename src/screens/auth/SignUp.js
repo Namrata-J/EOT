@@ -1,11 +1,11 @@
 import { Box, Link } from '@mui/material';
 import { authPageComp } from "../../components/";
 import { authCardLink } from "../../utils/commonStyles";
-import { useAuth } from "../../contexts/auth-context";
+import { useSelector } from 'react-redux';
 
 const SignUpPage = () => {
 
-    const { signUpHelperText } = useAuth();
+    const { signUpHelperText } = useSelector((store) => store.authHelperText)
 
     return (
         <authPageComp.AuthPageOuterContainer>
