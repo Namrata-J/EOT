@@ -121,3 +121,58 @@ export const boxText = {
     color: 'otherColors.lightGray',
     fontWeight: 'bold'
 }
+
+export const card = {
+    borderRadius: { xs: 5, sm: 2, md: 5 },
+    backgroundColor: 'primary.main',
+    color: 'otherColors.lightGray',
+    minHeight: '10rem'
+}
+
+export const cardAvatar = {
+    width: { xs: 30, sm: 40 },
+    height: { xs: 30, sm: 40 }
+}
+
+export const cardHeader = {
+    p: { xs: 1, md: 2 },
+    '& .MuiCardHeader-title': {
+        fontWeight: 'bold',
+        lineHeight: { xs: 1, sm: 1.3 },
+        fontSize: { xs: '0.8rem', sm: '0.9rem' }
+    },
+    '& .MuiCardHeader-subheader': {
+        color: 'otherColors.lightGray',
+        fontSize: { xs: '0.7rem', sm: '0.8rem' }
+    }
+}
+
+export const cardContent = {
+    p: { xs: 1, sm: 2 },
+    pt: { sm: 1 }
+}
+
+export const input = {
+    border: 'transparent',
+    backgroundColor: 'transparent',
+    outline: 'transparent'
+}
+
+export const textArea = {
+    color: '#9c9aa8',
+    width: '100%',
+    fontFamily: 'Gruppo',
+}
+
+export const cardActionIcon = {
+    '& .MuiSvgIcon-root': {
+        width: { xs: '0.8em', md: '1em' },
+    }
+}
+
+export const actionBtn = {
+    backgroundColor: "primary.dark",
+    color: 'otherColors.lightGray',
+    fontWeight: { sm: 'light', md: 'bold' },
+    fontSize: { xs: '0.7rem', md: '0.8rem' },
+}

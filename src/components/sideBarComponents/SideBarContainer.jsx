@@ -16,7 +16,8 @@ const SideBarContainer = ({ children }) => {
                 position: { xs: 'absolute', sm: 'static' },
                 zIndex: 1,
                 height: { xs: "92vh", sm: "87vh", md: "82vh" },
-                display: { xs: hamburgerPopUpDisplay, sm: 'flex' }
+                display: { xs: hamburgerPopUpDisplay, sm: 'flex' },
+                boxShadow: { xs: 3, sm: 0 }
             }}>
             {children}
         </Box>
