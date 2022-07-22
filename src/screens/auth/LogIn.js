@@ -1,7 +1,8 @@
 import { Box, Link } from '@mui/material';
+import { useSelector } from 'react-redux';
 import { authPageComp } from "../../components/";
 import { authCardLink } from "../../utils/commonStyles";
-import { useSelector } from 'react-redux';
+import { LOGIN_EMAIL, LOGIN_PWD } from "../../constants/authCardConstants";
 
 const LogInPage = () => {
 
@@ -15,14 +16,14 @@ const LogInPage = () => {
                     <authPageComp.AuthCardInputField
                         inputProps={{
                             text: logInHelperText.email,
-                            uniqueId: "LOGIN_EMAIL",
+                            uniqueId: LOGIN_EMAIL,
                             inputLabel: "Email",
                             inputType: "email"
                         }} />
                     <authPageComp.AuthCardInputField
                         inputProps={{
                             text: logInHelperText.pwd,
-                            uniqueId: "LOGIN_PWD",
+                            uniqueId: LOGIN_PWD,
                             inputLabel: "Password",
                             inputType: "password"
                         }} />
