@@ -1,22 +1,20 @@
 import { Box } from '@mui/material';
 import * as createPost from "../createPostComponents/";
+import { PostsListing } from "../postsSectionComponents/";
+import { scrollbar, sectionSpacing } from "../../utils/commonStyles";
 
 const ContentSection = () => {
     return (
         <Box
             sx={{
-                overflowY: 'scroll',
-                scrollbarWidth: 'none',
+                ...scrollbar,
                 width: '45rem',
-                ml: { xs: '0.5rem', md: '2rem' },
-                mr: { xs: '0.5rem', sm: '0rem', md: '2rem' },
-                "&::-webkit-scrollbar": {
-                    display: "none"
-                },
-                pt: { xs: '0.5rem', sm: 0 },
-                pb: '0.5rem'
+                ...sectionSpacing,
+                position: 'relative'
             }}>
             <createPost.CreatePostCard />
+            <createPost.EmojiPicker />
+            <PostsListing />
         </Box>
     );
 }

@@ -176,3 +176,29 @@ export const actionBtn = {
     fontWeight: { sm: 'light', md: 'bold' },
     fontSize: { xs: '0.7rem', md: '0.8rem' },
 }
+
+export const scrollbar = {
+    overflowY: 'scroll',
+    scrollbarWidth: 'none',
+    "&::-webkit-scrollbar": {
+        display: "none"
+    },
+}
+
+export const sectionSpacing = {
+    ml: { xs: '0.5rem', md: '2rem' },
+    mr: { xs: '0.5rem', sm: '0rem', md: '2rem' },
+    pt: { xs: '0.5rem', sm: 0 },
+    pb: '0.5rem',
+}
+
+export const emojiPicker = {
+    background: '#2d2640',
+    borderRadius: '1.3rem',
+    border: 'none',
+    boxShadow: 'none',
+    display: 'flex',
+    height: '17.2rem',
+    width: '100%',
+    position: 'absolute',
+}

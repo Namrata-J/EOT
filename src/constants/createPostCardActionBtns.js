@@ -4,7 +4,7 @@ import PhotoCameraBackTwoToneIcon from '@mui/icons-material/PhotoCameraBackTwoTo
 export const createPostCardActionBtns = [
     {
         icon: <PhotoCameraBackTwoToneIcon />,
-        iconName: "UPLOAD-MEDIA"
+        iconName: "UPLOAD_MEDIA"
     },
     {
         icon: <SentimentSatisfiedTwoToneIcon />,
