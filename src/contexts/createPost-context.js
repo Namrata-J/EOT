@@ -7,7 +7,7 @@ const CreatePostProvider = ({ children }) => {
 
     const initialcreatePostState = {
         content: "",
-        media: []
+        mediaLinks: []
     };
 
     const createPostReducer = (state, action) => {
@@ -25,13 +25,13 @@ const CreatePostProvider = ({ children }) => {
             case CREATE_POST_MEDIA:
                 return {
                     ...state,
-                    media: [...state.media, action.payload]
+                    mediaLinks: [...state.mediaLinks, action.payload]
                 }
             case CREATE_POST_CLEAR:
                 return {
                     ...state,
                     content: "",
-                    media: []
+                    mediaLinks: []
                 }
             default:
                 return state

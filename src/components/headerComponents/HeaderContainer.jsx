@@ -5,7 +5,7 @@ const HeaderContainer = ({ children }) => {
     return (
         <Box sx={{
             ...verticalFlexCenter,
-            zIndex: '2',
+            zIndex: '3',
             boxShadow: 3,
             width: '100%',
             position: 'relative',

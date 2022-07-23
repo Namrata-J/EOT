@@ -11,7 +11,8 @@ import {
   AuthProvider,
   SideBarProvider,
   HeaderProvider,
-  CreatePostProvider
+  CreatePostProvider,
+  PostCardProvider
 } from "./contexts/";
 
 // Call make Server
@@ -29,7 +30,9 @@ root.render(
             <SideBarProvider>
               <HeaderProvider>
                 <CreatePostProvider>
-                  <App />
+                  <PostCardProvider>
+                    <App />
+                  </PostCardProvider>
                 </CreatePostProvider>
               </HeaderProvider>
             </SideBarProvider>

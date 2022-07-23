@@ -14,7 +14,7 @@ const SideBarContainer = ({ children }) => {
                 width: { xs: '15rem', sm: '20rem', md: '15rem' },
                 ...flexBetweenVariant2,
                 position: { xs: 'absolute', sm: 'static' },
-                zIndex: 1,
+                zIndex: 2,
                 height: { xs: "92vh", sm: "87vh", md: "82vh" },
                 display: { xs: hamburgerPopUpDisplay, sm: 'flex' },
                 boxShadow: { xs: 3, sm: 0 }

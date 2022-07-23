@@ -28,14 +28,14 @@ const CreatePostCardContent = () => {
                         )
                 } />
             {
-                createPostState.media.length > 0 ?
-                    createPostState.media.map(
+                createPostState.mediaLinks.length > 0 ?
+                    createPostState.mediaLinks.map(
                         (image, index) =>
                             <Link
                                 key={index}
                                 href={image}
                                 fontFamily="Gruppo"
-                                color='otherColors.lightGray'>
+                                color='otherColors.lightestGray'>
                                 {image}
                             </Link>
                     ) : ""

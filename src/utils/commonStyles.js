@@ -4,6 +4,11 @@ export const flexCenter = {
     alignItems: 'center'
 }
 
+export const verticalFlex = {
+    display: 'flex',
+    flexDirection: 'column',
+}
+
 export const horizontalFlexCenter = {
     display: 'flex',
     justifyContent: 'center'
@@ -201,4 +206,13 @@ export const emojiPicker = {
     height: '17.2rem',
     width: '100%',
     position: 'absolute',
+    zIndex: '1'
+}
+
+export const cardOptionIcon = {
+    color: 'otherColors.white',
+    position: 'relative',
+    '& .MuiSvgIcon-root': {
+        fontSize: { xs: '1rem', md: '1.2rem' }
+    }
 }
