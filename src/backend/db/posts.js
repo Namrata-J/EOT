@@ -12,7 +12,7 @@ export const posts = [
     content:
       "Don't wish for it, work for it.",
     likes: {
-      likeCount: 0,
+      likeCount: 3,
       likedBy: [],
       dislikedBy: [],
     },
@@ -55,7 +55,7 @@ export const posts = [
     content:
       "Rocketry | Malayalam Trailer is OUT NOW.#RocketryTheFilm",
     likes: {
-      likeCount: 0,
+      likeCount: 35,
       likedBy: [],
       dislikedBy: [],
     },
@@ -86,7 +86,7 @@ export const posts = [
     content:
       "A few weeks ago, @NambiNOfficial and I had the honour of calling on PM @narendramodi.We spoke on the upcoming film #Rocketrythefilm and were touched and honored by PM's reaction to the clips and concern for Nambi ji & the wrong done to him. Thank you for the privilege sir.",
     likes: {
-      likeCount: 0,
+      likeCount: 56,
       likedBy: [],
       dislikedBy: [],
     },
@@ -117,7 +117,7 @@ export const posts = [
     content:
       "Happy Birthday to one of the most outstanding and spectacular gentleman I have ever met.May you have the most fantastic year yet.Full of Love happiness and great Health.#Rocketry",
     likes: {
-      likeCount: 0,
+      likeCount: 99,
       likedBy: [],
       dislikedBy: [],
     },
@@ -135,7 +135,7 @@ export const posts = [
     content:
       "Today 5pm IST.",
     likes: {
-      likeCount: 0,
+      likeCount: 256,
       likedBy: [],
       dislikedBy: [],
     },
@@ -153,7 +153,7 @@ export const posts = [
     content:
       "Love you guys ..🙏🙏🚀🚀🚀🚀",
     likes: {
-      likeCount: 0,
+      likeCount: 23,
       likedBy: [],
       dislikedBy: [],
     },
@@ -171,7 +171,7 @@ export const posts = [
     content:
       "Glad to have met PT Usha Ji in Parliament.",
     likes: {
-      likeCount: 0,
+      likeCount: 54,
       likedBy: [],
       dislikedBy: [],
     },
@@ -189,7 +189,7 @@ export const posts = [
     content:
       "log kya kahenge, yehi sochte rahoge toh kuch nahi kar paoge.",
     likes: {
-      likeCount: 0,
+      likeCount: 76,
       likedBy: [],
       dislikedBy: [],
     },
@@ -207,7 +207,7 @@ export const posts = [
     content:
       "What a lifetime opportunity to meet Mr Barack Obama. Also had the pleasure to attend his session in Singapore. One of the finest speakers on the planet.",
     likes: {
-      likeCount: 0,
+      likeCount: 32,
       likedBy: [],
       dislikedBy: [],
     },
@@ -225,7 +225,7 @@ export const posts = [
     content:
       "My skin care routine is Paris..",
     likes: {
-      likeCount: 0,
+      likeCount: 65,
       likedBy: [],
       dislikedBy: [],
     },
