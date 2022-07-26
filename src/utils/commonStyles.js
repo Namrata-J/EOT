@@ -129,9 +129,11 @@ export const boxText = {
 
 export const card = {
     borderRadius: { xs: 5, sm: 2, md: 5 },
+    border: 'none',
     backgroundColor: 'primary.main',
     color: 'otherColors.lightGray',
-    minHeight: '10rem'
+    minHeight: '10rem',
+    overflow: 'visible'
 }
 
 export const cardAvatar = {
@@ -201,7 +203,7 @@ export const emojiPicker = {
     background: '#2d2640',
     borderRadius: '1.3rem',
     border: 'none',
-    boxShadow: 'none',
+    boxShadow: '0px 1px 5px black',
     display: 'flex',
     height: '17.2rem',
     width: '100%',
@@ -214,5 +216,14 @@ export const cardOptionIcon = {
     position: 'relative',
     '& .MuiSvgIcon-root': {
         fontSize: { xs: '1rem', md: '1.2rem' }
+    }
+}
+
+export const commentCardActionIcon = {
+    '& .MuiSvgIcon-root': {
+        width: {
+            xs: '0.7em',
+            md: '0.8em',
+        }
     }
 }

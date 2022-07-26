@@ -26,11 +26,12 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "thetanmay",
-        firstName: "Tanmay",
-        lastName: "Bhat",
+        username: "tanaypratap",
+        firstName: "Tanay",
+        lastName: "Pratap",
         profilePic: "https://tinyurl.com/24bvpbzu",
-        text: "Totally agree!!!",
+        content: "Totally agree!!!",
+        media: [],
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -42,7 +43,8 @@ export const posts = [
         firstName: "Gaurav",
         lastName: "Taneja",
         profilePic: "https://tinyurl.com/r4b68v7s",
-        text: "So true!!!",
+        content: "So true!!!",
+        media: [],
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -72,8 +74,9 @@ export const posts = [
         username: "thetanmay",
         firstName: "Tanmay",
         lastName: "Bhat",
-        profilePic: "https://tinyurl.com/24bvpbzu",
-        text: "So excited to watch it!!",
+        profilePic: "https://tinyurl.com/4xbybcf5",
+        content: "So excited to watch it!!",
+        media: [],
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -104,7 +107,8 @@ export const posts = [
         firstName: "Narendra",
         lastName: "Modi",
         profilePic: "https://tinyurl.com/yc4kzvs4",
-        text: "Happy to have met you and the brilliant Nambi Narayanan Ji. This film covers an important topic, which more people must know about.Our scientists and technicians have made great sacrifices for our country, glimpses of which I could see in the clips of Rocketry.",
+        content: "Happy to have met you and the brilliant Nambi Narayanan Ji. This film covers an important topic, which more people must know about.Our scientists and technicians have made great sacrifices for our country, glimpses of which I could see in the clips of Rocketry.",
+        media: [],
         votes: {
           upvotedBy: [],
           downvotedBy: [],

@@ -12,8 +12,7 @@ const ContentSection = () => {
                 ...sectionSpacing,
                 position: 'relative'
             }}>
-            <createPost.CreatePostCard />
-            <createPost.EmojiPicker />
+            <createPost.CreatePostCard btnType="POST" />
             <PostsListing />
         </Box>
     );

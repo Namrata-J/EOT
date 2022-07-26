@@ -7,13 +7,14 @@ import { getAllPosts } from "../../redux/features/post/postSlice";
 
 const PostsListing = () => {
 
+    const { comments } = useSelector((store) => store.comment);
     const { posts } = useSelector((store) => store.post);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getAllPosts());
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [dispatch]);
+    }, [comments, dispatch]);
 
     return (
         <Box

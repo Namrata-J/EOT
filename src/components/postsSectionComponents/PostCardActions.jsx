@@ -1,12 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { IconButton, CardActions, Typography } from '@mui/material';
+import { useCreatePostContext } from "../../contexts/";
 import { cardActionIcon } from "../../utils/commonStyles";
+import { COMMENT_CLEAR } from "../../constants/createPostConstants";
+import { IconButton, CardActions, Typography } from '@mui/material';
 import { postCardActionBtns } from "../../constants/postCardActionBtns";
 import { likePost, dislikePost } from "../../redux/features/post/postSlice";
 
-const PostCardActions = (post) => {
+const PostCardActions = ({ post }) => {
 
     const dispatch = useDispatch();
+    const {
+        setCommentDialogOfCardWithId,
+        commentDialogOfCardWithId,
+        dispatchOfCommentState,
+        setShowEmojiPicker } = useCreatePostContext();
     const { loggedInUser } = useSelector((store) => store.user)
 
     return (
@@ -18,13 +25,34 @@ const PostCardActions = (post) => {
                 postCardActionBtns.map((cardIcon, index) =>
                     <IconButton
                         key={index}
-                        sx={cardActionIcon}
+                        sx={
+                            post.likes.likedBy.some((id) => id._id === loggedInUser._id) &&
+                                cardIcon.iconName === "LIKE_POST" ?
+                                {
+                                    ...cardActionIcon,
+                                    color: 'otherColors.lightPurple'
+                                } :
+                                { ...cardActionIcon }
+                        }
                         component="label"
                         onClick={
                             () => cardIcon.iconName === "LIKE_POST" ?
                                 post.likes.likedBy.some((id) => id._id === loggedInUser._id) ?
                                     dispatch(dislikePost(post._id)) :
-                                    dispatch(likePost(post._id)) : ""
+                                    dispatch(likePost(post._id)) :
+                                cardIcon.iconName === "COMMENT_ON_POST" ?
+                                    commentDialogOfCardWithId === post._id ?
+                                        (
+                                            setCommentDialogOfCardWithId(""),
+                                            dispatchOfCommentState({
+                                                type: COMMENT_CLEAR
+                                            }),
+                                            setShowEmojiPicker(false)
+                                        ) :
+                                        (
+                                            setCommentDialogOfCardWithId(post._id),
+                                            setShowEmojiPicker(false)
+                                        ) : ""
                         }>
                         <Typography
                             sx={{

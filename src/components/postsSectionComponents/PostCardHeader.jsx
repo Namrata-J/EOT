@@ -3,21 +3,21 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Avatar, CardHeader, IconButton, Box, Typography } from '@mui/material';
 import { cardHeader, cardAvatar, cardOptionIcon } from "../../utils/commonStyles";
 
-const PostCardHeader = (post) => {
+const PostCardHeader = ({ post, comment }) => {
 
     const { stateOfPostCard, dispatchOfPostCard } = usePostCard();
-
+    
     return (
         <CardHeader
             sx={cardHeader}
             avatar={
                 <Avatar
                     alt="AB"
-                    src={post.profilePic}
+                    src={post ? post.profilePic : comment.profilePic}
                     sx={cardAvatar} />
             }
             action={
-                <IconButton
+                post && <IconButton
                     sx={cardOptionIcon}
                     onClick={
                         () =>
@@ -48,8 +48,16 @@ const PostCardHeader = (post) => {
                     <MoreVertIcon />
                 </IconButton>
             }
-            title={post.firstName + " " + post.lastName + " || " + post.createdAt.slice(0, 10)}
-            subheader={"@" + post.username}
+            title={
+                post ?
+                    post.firstName + " " + post.lastName + " || " + post.createdAt.slice(0, 10)
+                    : comment.firstName + " " + comment.lastName
+            }
+            subheader={
+                post ?
+                    "@" + post.username :
+                    "@" + comment.username
+            }
         />
     );
 }

@@ -52,7 +52,10 @@ export const addPostCommentHandler = function (schema, request) {
     const comment = {
       _id: uuid(),
       ...commentData,
-      username: user.username,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      username: user.username? user.username : user.userName,
+      profilePic: user.profilePic,
       votes: { upvotedBy: [], downvotedBy: [] },
       createdAt: formatDate(),
       updatedAt: formatDate(),
@@ -196,7 +199,6 @@ export const upvotePostCommentHandler = function (schema, request) {
     const commentIndex = post.comments.findIndex(
       (comment) => comment._id === commentId
     );
-
     if (
       post.comments[commentIndex].votes.upvotedBy.some(
         (currUser) => currUser._id === user._id

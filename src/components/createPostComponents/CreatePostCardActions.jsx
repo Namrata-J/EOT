@@ -3,19 +3,26 @@ import { useCreatePostContext } from "../../contexts/";
 import { createPost } from "../../redux/features/post/postSlice";
 import { Button, IconButton, CardActions, } from '@mui/material';
 import { actionBtn, cardActionIcon } from "../../utils/commonStyles";
-import { CREATE_POST_MEDIA, CREATE_POST_CLEAR } from "../../constants/createPostConstants";
+import { addComment } from "../../redux/features/comment/commentSlice";
 import { createPostCardActionBtns } from "../../constants/createPostCardActionBtns";
+import { CREATE_POST_MEDIA, CREATE_POST_CLEAR, COMMENT_MEDIA, COMMENT_CLEAR } from "../../constants/createPostConstants";
 
-const CreatePostCardActions = () => {
-
-    const { createPostState, dispatchOfCreatePostState, setShowEmojiPicker, showEmojiPicker } = useCreatePostContext();
+const CreatePostCardActions = ({ btnType, post }) => {
+    const {
+        setShowCommentBoxEmojiPicker,
+        setCommentDialogOfCardWithId,
+        dispatchOfCreatePostState,
+        showCommentBoxEmojiPicker,
+        dispatchOfCommentState,
+        setShowEmojiPicker,
+        createPostState,
+        showEmojiPicker,
+        commentState } = useCreatePostContext();
     const dispatch = useDispatch();
 
     return (
         <CardActions disableSpacing
-            sx={{
-                position: 'relative'
-            }}>
+            sx={{ position: 'relative' }}>
             {
                 createPostCardActionBtns.map((cardIcon, index) =>
                     <IconButton
@@ -25,23 +32,38 @@ const CreatePostCardActions = () => {
                         onClick={
                             () =>
                                 cardIcon.iconName === "UPLOAD_EMOJI" ?
-                                    setShowEmojiPicker(!showEmojiPicker) : ""
+                                    btnType === "POST" ?
+                                        (
+                                            setShowEmojiPicker(!showEmojiPicker),
+                                            setCommentDialogOfCardWithId(""),
+                                            dispatchOfCommentState({
+                                                type: COMMENT_CLEAR
+                                            })
+                                        ) :
+                                        setShowCommentBoxEmojiPicker(!showCommentBoxEmojiPicker) : ""
                         }>
                         {
-                            cardIcon.iconName === "UPLOAD_MEDIA" ?
-                                <input
-                                    hidden
-                                    accept="image/*"
-                                    type="file"
-                                    onChange={
-                                        (e) =>
+                            cardIcon.iconName === "UPLOAD_MEDIA" &&
+                            <input
+                                hidden
+                                accept="image/*"
+                                type="file"
+                                onChange={
+                                    (e) =>
+                                        btnType === "POST" ?
                                             dispatchOfCreatePostState(
                                                 {
                                                     type: CREATE_POST_MEDIA,
                                                     payload: URL.createObjectURL(e.target.files[0])
                                                 }
+                                            ) :
+                                            dispatchOfCommentState(
+                                                {
+                                                    type: COMMENT_MEDIA,
+                                                    payload: URL.createObjectURL(e.target.files[0])
+                                                }
                                             )
-                                    } /> : ""
+                                } />
                         }
                         {cardIcon.icon}
                     </IconButton>
@@ -55,17 +77,36 @@ const CreatePostCardActions = () => {
                     position: 'absolute',
                     right: '0.6rem'
                 }}
-                onClick={() => {
-                    dispatch(createPost(createPostState))
-                    dispatchOfCreatePostState(
-                        {
-                            type: CREATE_POST_CLEAR
-                        }
-                    )
-                }}>
-                Post
+                onClick={() =>
+                    btnType === "POST" ?
+                        (
+                            dispatch(createPost(createPostState)),
+                            dispatchOfCreatePostState(
+                                {
+                                    type: CREATE_POST_CLEAR
+                                }
+                            ),
+                            setShowEmojiPicker(false)
+                        ) :
+                        (
+                            dispatch(addComment(
+                                {
+                                    postId: post._id,
+                                    commentData: commentState
+                                }
+                            )),
+                            dispatchOfCommentState(
+                                {
+                                    type: COMMENT_CLEAR
+                                }
+                            ),
+                            setShowCommentBoxEmojiPicker(false),
+                            setCommentDialogOfCardWithId("")
+                        )
+                }>
+                {btnType}
             </Button>
-        </CardActions>
+        </CardActions >
     );
 }
 
