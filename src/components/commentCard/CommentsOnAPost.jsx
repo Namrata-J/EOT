@@ -1,9 +1,13 @@
 import { PostCardHeader, PostCardContent } from "../postsSectionComponents/";
+import { CreatePostCard } from "../createPostComponents/";
+import { useCreatePostContext } from "../../contexts/";
 import { card } from "../../utils/commonStyles";
 import { Box, Card } from '@mui/material';
 import { CommentCardActions } from "./";
 
 const CommentsOnAPost = (post) => {
+
+    const { editBoxWithCommentId } = useCreatePostContext();
 
     return (
         <Box>
@@ -22,6 +26,7 @@ const CommentsOnAPost = (post) => {
                         <PostCardHeader comment={comment} />
                         <PostCardContent comment={comment} />
                         <CommentCardActions post={post} comment={comment} />
+                        {editBoxWithCommentId === comment._id && <CreatePostCard btnType="SAVE" post={{ ...post }} comment={comment} />}
                     </Card>
                 ) : ""
             }

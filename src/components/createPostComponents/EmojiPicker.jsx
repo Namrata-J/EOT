@@ -22,7 +22,11 @@ const EmojiPicker = ({ btnType }) => {
                         <Picker
                             onEmojiClick={onCommentBoxEmojiClick}
                             pickerStyle={emojiPicker}
-                        /> : ""
+                        /> : showCommentBoxEmojiPicker && btnType === "SAVE" ?
+                            <Picker
+                                onEmojiClick={onCommentBoxEmojiClick}
+                                pickerStyle={{ ...emojiPicker, width: '90%' }}
+                            /> : ""
             }
         </>
     );

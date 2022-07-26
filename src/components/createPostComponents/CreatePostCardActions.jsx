@@ -3,22 +3,25 @@ import { useCreatePostContext } from "../../contexts/";
 import { createPost } from "../../redux/features/post/postSlice";
 import { Button, IconButton, CardActions, } from '@mui/material';
 import { actionBtn, cardActionIcon } from "../../utils/commonStyles";
-import { addComment } from "../../redux/features/comment/commentSlice";
+import { addComment, editComment } from "../../redux/features/comment/commentSlice";
 import { createPostCardActionBtns } from "../../constants/createPostCardActionBtns";
 import { CREATE_POST_MEDIA, CREATE_POST_CLEAR, COMMENT_MEDIA, COMMENT_CLEAR } from "../../constants/createPostConstants";
 
-const CreatePostCardActions = ({ btnType, post }) => {
+const CreatePostCardActions = ({ btnType, post, comment }) => {
     const {
         setShowCommentBoxEmojiPicker,
         setCommentDialogOfCardWithId,
         dispatchOfCreatePostState,
         showCommentBoxEmojiPicker,
+        setEditBoxWithCommentId,
         dispatchOfCommentState,
         setShowEmojiPicker,
         createPostState,
         showEmojiPicker,
         commentState } = useCreatePostContext();
     const dispatch = useDispatch();
+
+    console.log(btnType)
 
     return (
         <CardActions disableSpacing
@@ -87,22 +90,38 @@ const CreatePostCardActions = ({ btnType, post }) => {
                                 }
                             ),
                             setShowEmojiPicker(false)
-                        ) :
-                        (
-                            dispatch(addComment(
-                                {
-                                    postId: post._id,
-                                    commentData: commentState
-                                }
-                            )),
-                            dispatchOfCommentState(
-                                {
-                                    type: COMMENT_CLEAR
-                                }
-                            ),
-                            setShowCommentBoxEmojiPicker(false),
-                            setCommentDialogOfCardWithId("")
-                        )
+                        ) : btnType === "COMMENT" ?
+                            (
+                                dispatch(addComment(
+                                    {
+                                        postId: post._id,
+                                        commentData: commentState
+                                    }
+                                )),
+                                dispatchOfCommentState(
+                                    {
+                                        type: COMMENT_CLEAR
+                                    }
+                                ),
+                                setShowCommentBoxEmojiPicker(false),
+                                setCommentDialogOfCardWithId("")
+                            ) :
+                            (
+                                dispatch(editComment(
+                                    {
+                                        postId: post._id,
+                                        commentId: comment._id,
+                                        editedData: commentState
+                                    }
+                                )),
+                                dispatchOfCommentState(
+                                    {
+                                        type: COMMENT_CLEAR
+                                    }
+                                ),
+                                setShowCommentBoxEmojiPicker(false),
+                                setEditBoxWithCommentId("")
+                            )
                 }>
                 {btnType}
             </Button>

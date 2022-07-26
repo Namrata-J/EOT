@@ -103,6 +103,8 @@ const CreatePostProvider = ({ children }) => {
 
     const [commentDialogOfCardWithId, setCommentDialogOfCardWithId] = useState("");
 
+    const [editBoxWithCommentId, setEditBoxWithCommentId] = useState("");
+
     useEffect(() => {
         dispatchOfCreatePostState({ type: CREATE_POST_EMOJI, payload: chosenEmoji })
     }, [chosenEmoji])
@@ -128,7 +130,9 @@ const CreatePostProvider = ({ children }) => {
             setShowCommentBoxEmojiPicker,
             chosenEmojiForCommentBox, 
             setChosenEmojiForCommentBox,
-            onCommentBoxEmojiClick
+            onCommentBoxEmojiClick,
+            editBoxWithCommentId,
+            setEditBoxWithCommentId
         }}>
         {children}
     </createPostContext.Provider>

@@ -45,7 +45,10 @@ const CreatePostCardContent = ({ btnType }) => {
                         (image, index) =>
                             <CardLink image={image} index={index} />
                     ) :
-                    commentState.mediaLinks.length > 0 && btnType === "COMMENT" ?
+                    (
+                        (commentState.mediaLinks.length > 0 && btnType === "COMMENT") ||
+                        (commentState.mediaLinks.length > 0 && btnType === "SAVE")
+                    ) ?
                         commentState.mediaLinks.map(
                             (image, index) =>
                                 <CardLink image={image} index={index} />
