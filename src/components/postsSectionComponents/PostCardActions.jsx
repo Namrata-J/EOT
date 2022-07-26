@@ -5,6 +5,7 @@ import { COMMENT_CLEAR } from "../../constants/createPostConstants";
 import { IconButton, CardActions, Typography } from '@mui/material';
 import { postCardActionBtns } from "../../constants/postCardActionBtns";
 import { likePost, dislikePost } from "../../redux/features/post/postSlice";
+import { addToUserBookmarks, removeFromUserBookmarks } from "../../redux/features/user/userSlice";
 
 const PostCardActions = ({ post }) => {
 
@@ -14,6 +15,7 @@ const PostCardActions = ({ post }) => {
         commentDialogOfCardWithId,
         dispatchOfCommentState,
         setShowEmojiPicker } = useCreatePostContext();
+    const { bookmarks } = useSelector((store) => store.user)
     const { loggedInUser } = useSelector((store) => store.user)
 
     return (
@@ -26,8 +28,14 @@ const PostCardActions = ({ post }) => {
                     <IconButton
                         key={index}
                         sx={
-                            post.likes.likedBy.some((id) => id._id === loggedInUser._id) &&
-                                cardIcon.iconName === "LIKE_POST" ?
+                            (
+                                post.likes.likedBy.some((id) => id._id === loggedInUser._id) &&
+                                cardIcon.iconName === "LIKE_POST"
+                            ) ||
+                                (
+                                    bookmarks.some((bookmarkPost) => bookmarkPost._id === post._id) &&
+                                    cardIcon.iconName === "BOOKMARK_POST"
+                                ) ?
                                 {
                                     ...cardActionIcon,
                                     color: 'otherColors.lightPurple'
@@ -52,7 +60,11 @@ const PostCardActions = ({ post }) => {
                                         (
                                             setCommentDialogOfCardWithId(post._id),
                                             setShowEmojiPicker(false)
-                                        ) : ""
+                                        ) :
+                                    cardIcon.iconName === "BOOKMARK_POST" ?
+                                        bookmarks.some((bookmarkPost) => bookmarkPost._id === post._id) ?
+                                            dispatch(removeFromUserBookmarks(post._id)) :
+                                            dispatch(addToUserBookmarks(post._id)) : ""
                         }>
                         <Typography
                             sx={{

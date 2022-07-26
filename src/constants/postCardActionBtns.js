@@ -21,3 +21,18 @@ export const postCardActionBtns = [
         iconName: "BOOKMARK_POST"
     },
 ];
+
+export const postCardOptions = [
+    {
+        option: "FOLLOW",
+        optionStr: "FOLLOW_USER"
+    },
+    {
+        option: "EDIT",
+        optionStr: "EDIT_POST"
+    },
+    {
+        option: "DELETE",
+        optionStr: "DELETE_POST"
+    }
+];

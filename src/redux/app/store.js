@@ -11,6 +11,6 @@ export const store = configureStore({
         auth: authReducer,
         user: userReducer,
         post: postReducer,
-        comment: commentReducer,
+        comment: commentReducer
     },
 });

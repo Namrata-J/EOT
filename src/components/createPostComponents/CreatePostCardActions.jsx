@@ -21,8 +21,6 @@ const CreatePostCardActions = ({ btnType, post, comment }) => {
         commentState } = useCreatePostContext();
     const dispatch = useDispatch();
 
-    console.log(btnType)
-
     return (
         <CardActions disableSpacing
             sx={{ position: 'relative' }}>
