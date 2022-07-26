@@ -62,6 +62,19 @@ const downVoteComment = createAsyncThunk("comments/downVoteComment", async ({ po
     }
 });
 
+const deleteComment = createAsyncThunk("comments/deleteComment", async ({ postId, commentId }) => {
+    try {
+        const response = await axios.delete(`/api/comments/delete/${postId}/${commentId}`,
+            {
+                headers: { authorization: encodedToken }
+            }
+        );
+        return response.data.comments
+    } catch (error) {
+        return error
+    }
+});
+
 const commentSlice = createSlice({
     name: "comments",
     initialState,
@@ -114,9 +127,21 @@ const commentSlice = createSlice({
             state.comments = []
             state.error = "ERROR_OCCURRED"
         },
+        [deleteComment.pending]: (state) => {
+            state.loading = true;
+        },
+        [deleteComment.fulfilled]: (state, action) => {
+            state.loading = false
+            state.comments = action.payload
+        },
+        [deleteComment.rejected]: (state) => {
+            state.loading = false
+            state.comments = []
+            state.error = "ERROR_OCCURRED"
+        },
     }
 });
 
-export { addComment, getCommentsOfAPost, upVoteComment, downVoteComment };
+export { addComment, getCommentsOfAPost, upVoteComment, downVoteComment, deleteComment };
 const { reducer } = commentSlice;
 export { reducer };

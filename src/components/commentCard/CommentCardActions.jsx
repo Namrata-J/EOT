@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { commentCardActionIcon } from "../../utils/commonStyles";
 import { CardActions, IconButton, Typography } from '@mui/material';
 import { commentCardActionBtns } from "../../constants/commentCardActionBtns";
-import { upVoteComment, downVoteComment } from "../../redux/features/comment/commentSlice";
+import { upVoteComment, downVoteComment, deleteComment } from "../../redux/features/comment/commentSlice";
 
 const CommentCardActions = ({ post, comment }) => {
 
@@ -45,7 +45,15 @@ const CommentCardActions = ({ post, comment }) => {
                                             postId: post._id,
                                             commentId: comment._id
                                         })
-                                    ) : ""
+                                    ) :
+                                actionIcon.iconName === "EDIT_COMMENT" ?
+                                    "" :
+                                    dispatch(deleteComment(
+                                        {
+                                            postId: post._id,
+                                            commentId: comment._id
+                                        })
+                                    )
                         }
                     >
                         <Typography

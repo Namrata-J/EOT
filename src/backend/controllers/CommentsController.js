@@ -150,8 +150,8 @@ export const deletePostCommentHandler = function (schema, request) {
       (comment) => comment._id === commentId
     );
     if (
-      post.comments[commentIndex].username !== user.username &&
-      post.username !== user.username
+      post.comments[commentIndex].username !== user.userName &&
+      post.username !== user.userName
     ) {
       return new Response(
         400,
