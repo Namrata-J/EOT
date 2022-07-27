@@ -85,6 +85,34 @@ const removeFromUserBookmarks = createAsyncThunk("user/removeFromBookmark", asyn
     }
 });
 
+const followTheUser = createAsyncThunk("user/followUser", async ({ followUsername }) => {
+    try {
+        const response = await axios.post(`/api/users/follow/${followUsername}`,
+            {},
+            {
+                headers: { authorization: encodedToken }
+            }
+        );
+        return response.data
+    } catch (error) {
+        return error
+    }
+});
+
+const unfollowTheUser = createAsyncThunk("user/unfollowUser", async ({ followUsername }) => {
+    try {
+        const response = await axios.post(`/api/users/unfollow/${followUsername}`,
+            {},
+            {
+                headers: { authorization: encodedToken }
+            }
+        );
+        return response.data
+    } catch (error) {
+        return error
+    }
+});
+
 const userSlice = createSlice({
     name: "user",
     initialState,
@@ -161,8 +189,41 @@ const userSlice = createSlice({
             state.bookmarks = {}
             state.error = "ERROR_OCCURRED"
         },
+        [followTheUser.pending]: (state) => {
+            state.loading = true
+        },
+        [followTheUser.fulfilled]: (state, action) => {
+            state.loading = false
+            state.loggedInUser = action.payload.user
+        },
+        [followTheUser.rejected]: (state) => {
+            state.loading = false
+            state.loggedInUser = {}
+            state.error = "ERROR_OCCURRED"
+        },
+        [unfollowTheUser.pending]: (state) => {
+            state.loading = true
+        },
+        [unfollowTheUser.fulfilled]: (state, action) => {
+            state.loading = false
+            state.loggedInUser = action.payload.user
+        },
+        [unfollowTheUser.rejected]: (state) => {
+            state.loading = false
+            state.loggedInUser = {}
+            state.error = "ERROR_OCCURRED"
+        },
     }
 });
 
-export { getAllUsers, getSelectedUser, saveUserEditDetails, getAllUserBookmarks, addToUserBookmarks, removeFromUserBookmarks };
+export {
+    getAllUsers,
+    getSelectedUser,
+    saveUserEditDetails,
+    getAllUserBookmarks,
+    addToUserBookmarks,
+    removeFromUserBookmarks,
+    followTheUser,
+    unfollowTheUser
+};
 export const { reducer } = userSlice;

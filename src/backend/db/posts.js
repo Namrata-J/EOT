@@ -16,7 +16,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    username: "adarshbalika",
+    username: "the_adarsh_balika",
     firstName: "Adarsh",
     lastName: "Balika",
     profilePic: "https://tinyurl.com/j6v2eejb",

@@ -24,15 +24,15 @@ export const postCardActionBtns = [
 
 export const postCardOptions = [
     {
-        option: "FOLLOW",
+        optionName: "Follow",
         optionStr: "FOLLOW_USER"
     },
     {
-        option: "EDIT",
+        optionName: "Edit",
         optionStr: "EDIT_POST"
     },
     {
-        option: "DELETE",
+        optionName: "Delete",
         optionStr: "DELETE_POST"
     }
 ];
