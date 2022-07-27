@@ -8,12 +8,13 @@ const SideBarLogOutBoxText = () => {
     const { loggedInUser } = useSelector((store) => store.user)
 
     return (
-        <Box sx={{ textAlign: "left" }}>
+        <Box sx={{ textAlign: "left", pr: 2 }}>
             <Typography sx={{
                 ...boxText,
                 fontSize: {
                     xs: "0.7rem",
-                    md: "1rem"
+                    md: "0.8rem",
+                    lg: "1rem"
                 }
             }}>
                 {loggedInUser.firstName} {loggedInUser.lastName}
@@ -21,7 +22,7 @@ const SideBarLogOutBoxText = () => {
                     sx={{
                         fontSize: {
                             xs: "x-small",
-                            md: "small"
+                            lg: "small"
                         },
                         color: "otherColors.lightGreen"
                     }} />
@@ -30,7 +31,7 @@ const SideBarLogOutBoxText = () => {
                 sx={{
                     fontSize: {
                         xs: "x-small",
-                        md: "small"
+                        lg: "small"
                     },
                     lineHeight: 0.8
                 }}>

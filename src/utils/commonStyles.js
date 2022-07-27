@@ -193,8 +193,8 @@ export const scrollbar = {
 }
 
 export const sectionSpacing = {
-    ml: { xs: '0.5rem', md: '2rem' },
-    mr: { xs: '0.5rem', sm: '0rem', md: '2rem' },
+    ml: { xs: '0.5rem', md: '1rem', lg: '2rem' },
+    mr: { xs: '0.5rem', sm: '0rem', md: '1rem', lg: '2rem' },
     pt: { xs: '0.5rem', sm: 0 },
     pb: '0.5rem',
 }
@@ -226,4 +226,8 @@ export const commentCardActionIcon = {
             md: '0.8em',
         }
     }
+}
+
+export const recommendationSection = {
+    width: { md: '14rem', lg: '18rem' }
 }

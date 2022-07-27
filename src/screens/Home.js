@@ -14,6 +14,7 @@ const HomePage = () => {
                 }}>
                 <utilComp.SideBar />
                 <utilComp.ContentSection />
+                <utilComp.FollowRecommendationSection />
             </Box>
         </utilComp.PageContainer>
     );
