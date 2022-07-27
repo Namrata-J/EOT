@@ -1,14 +1,16 @@
-import { usePostCard } from "../../contexts/";
 import { useSelector, useDispatch } from "react-redux";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { usePostCard, useCreatePostContext } from "../../contexts/";
 import { postCardOptions } from "../../constants/postCardActionBtns";
 import { Avatar, CardHeader, IconButton, Box, Typography } from '@mui/material';
+import { COMMENT_TEXT, COMMENT_MEDIA } from "../../constants/createPostConstants";
 import { cardHeader, cardAvatar, cardOptionIcon } from "../../utils/commonStyles";
 import { followTheUser, unfollowTheUser } from "../../redux/features/user/userSlice";
 
 const PostCardHeader = ({ post, comment }) => {
 
-    const { stateOfPostCard, dispatchOfPostCard } = usePostCard();
+    const { setCommentDialogOfCardWithId, dispatchOfCommentState } = useCreatePostContext();
+    const { stateOfPostCard, dispatchOfPostCard, setShowEditPostBox } = usePostCard();
     const { loggedInUser } = useSelector((store) => store.user);
     const dispatch = useDispatch();
 
@@ -64,6 +66,19 @@ const PostCardHeader = ({ post, comment }) => {
                                                             followUsername: post.username
                                                         }
                                                     )
+                                                ) :
+                                            option.optionStr === "EDIT_POST" ?
+                                                (
+                                                    setCommentDialogOfCardWithId(post._id),
+                                                    dispatchOfCommentState({
+                                                        type: COMMENT_TEXT,
+                                                        payload: post.content
+                                                    }),
+                                                    dispatchOfCommentState({
+                                                        type: COMMENT_MEDIA,
+                                                        payload: post.mediaLinks
+                                                    }),
+                                                    setShowEditPostBox(true)
                                                 ) : ""
                                     }>
                                     {

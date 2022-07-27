@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import { useCreatePostContext } from "../../contexts/";
-import { createPost } from "../../redux/features/post/postSlice";
+import { createPost, editPost } from "../../redux/features/post/postSlice";
 import { Button, IconButton, CardActions, } from '@mui/material';
+import { useCreatePostContext, usePostCard } from "../../contexts/";
 import { actionBtn, cardActionIcon } from "../../utils/commonStyles";
 import { addComment, editComment } from "../../redux/features/comment/commentSlice";
 import { createPostCardActionBtns } from "../../constants/createPostCardActionBtns";
@@ -19,6 +19,7 @@ const CreatePostCardActions = ({ btnType, post, comment }) => {
         createPostState,
         showEmojiPicker,
         commentState } = useCreatePostContext();
+    const { showEditPostBox, setShowEditPostBox } = usePostCard();
     const dispatch = useDispatch();
 
     return (
@@ -89,21 +90,38 @@ const CreatePostCardActions = ({ btnType, post, comment }) => {
                             ),
                             setShowEmojiPicker(false)
                         ) : btnType === "COMMENT" ?
-                            (
-                                dispatch(addComment(
-                                    {
-                                        postId: post._id,
-                                        commentData: commentState
-                                    }
-                                )),
-                                dispatchOfCommentState(
-                                    {
-                                        type: COMMENT_CLEAR
-                                    }
-                                ),
-                                setShowCommentBoxEmojiPicker(false),
-                                setCommentDialogOfCardWithId("")
-                            ) :
+                            showEditPostBox ?
+                                (
+                                    dispatch(editPost(
+                                        {
+                                            postId: post._id,
+                                            editedPostData: commentState
+                                        }
+                                    )),
+                                    dispatchOfCommentState(
+                                        {
+                                            type: COMMENT_CLEAR
+                                        }
+                                    ),
+                                    setShowCommentBoxEmojiPicker(false),
+                                    setCommentDialogOfCardWithId("")
+                                ) :
+                                (
+                                    dispatch(addComment(
+                                        {
+                                            postId: post._id,
+                                            commentData: commentState
+                                        }
+                                    )),
+                                    dispatchOfCommentState(
+                                        {
+                                            type: COMMENT_CLEAR
+                                        }
+                                    ),
+                                    setShowCommentBoxEmojiPicker(false),
+                                    setCommentDialogOfCardWithId(""),
+                                    setShowEditPostBox(false)
+                                ) :
                             (
                                 dispatch(editComment(
                                     {
@@ -121,7 +139,7 @@ const CreatePostCardActions = ({ btnType, post, comment }) => {
                                 setEditBoxWithCommentId("")
                             )
                 }>
-                {btnType}
+                {btnType === "COMMENT" && showEditPostBox ? "EDIT POST" : btnType}
             </Button>
         </CardActions >
     );

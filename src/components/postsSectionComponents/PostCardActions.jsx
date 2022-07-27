@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useCreatePostContext } from "../../contexts/";
 import { cardActionIcon } from "../../utils/commonStyles";
+import { useCreatePostContext, usePostCard } from "../../contexts/";
 import { COMMENT_CLEAR } from "../../constants/createPostConstants";
 import { IconButton, CardActions, Typography } from '@mui/material';
 import { postCardActionBtns } from "../../constants/postCardActionBtns";
@@ -10,6 +10,7 @@ import { addToUserBookmarks, removeFromUserBookmarks } from "../../redux/feature
 const PostCardActions = ({ post }) => {
 
     const dispatch = useDispatch();
+    const { setShowEditPostBox } = usePostCard();
     const {
         setCommentDialogOfCardWithId,
         commentDialogOfCardWithId,
@@ -55,7 +56,8 @@ const PostCardActions = ({ post }) => {
                                             dispatchOfCommentState({
                                                 type: COMMENT_CLEAR
                                             }),
-                                            setShowEmojiPicker(false)
+                                            setShowEmojiPicker(false),
+                                            setShowEditPostBox(false)
                                         ) :
                                         (
                                             setCommentDialogOfCardWithId(post._id),

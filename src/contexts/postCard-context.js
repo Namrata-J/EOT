@@ -1,4 +1,4 @@
-import { useEffect, useReducer, createContext, useContext } from "react";
+import { useEffect, useState, useReducer, createContext, useContext } from "react";
 import { getAllUsers } from "../redux/features/user/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -23,6 +23,8 @@ const PostCardProvider = ({ children }) => {
 
     const [stateOfPostCard, dispatchOfPostCard] = useReducer(postCardReducer, []);
 
+    const [showEditPostBox, setShowEditPostBox] = useState(false);
+
     useEffect(() => {
         dispatch(getAllUsers())
     }, [loggedInUser, dispatch]);
@@ -31,7 +33,9 @@ const PostCardProvider = ({ children }) => {
         <postCardContext.Provider
             value={{
                 stateOfPostCard,
-                dispatchOfPostCard
+                dispatchOfPostCard,
+                showEditPostBox,
+                setShowEditPostBox
             }}>
             {children}
         </postCardContext.Provider>

@@ -59,6 +59,22 @@ const getAllPosts = createAsyncThunk("posts/getAllPosts", async () => {
     }
 });
 
+const editPost = createAsyncThunk("posts/editPost", async ({ postId, editedPostData }) => {
+    try {
+        const response = await axios.post(`/api/posts/edit/${postId}`,
+            {
+                postData: { ...editedPostData }
+            },
+            {
+                headers: { authorization: encodedToken }
+            }
+        );
+        return response.data.posts
+    } catch (error) {
+        return error
+    }
+});
+
 const postSlice = createSlice({
     name: "posts",
     initialState,
@@ -110,10 +126,22 @@ const postSlice = createSlice({
             state.loading = false
             state.posts = []
             state.error = "ERROR_OCCURRED"
+        },
+        [editPost.pending]: (state) => {
+            state.loading = true;
+        },
+        [editPost.fulfilled]: (state, action) => {
+            state.loading = false
+            state.posts = action.payload
+        },
+        [editPost.rejected]: (state) => {
+            state.loading = false
+            state.posts = []
+            state.error = "ERROR_OCCURRED"
         }
     }
 });
 
-export { createPost, getAllPosts, likePost, dislikePost };
+export { createPost, getAllPosts, likePost, dislikePost, editPost };
 const { reducer } = postSlice;
 export { reducer };
