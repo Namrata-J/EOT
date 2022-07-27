@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { deletePost } from "../../redux/features/post/postSlice";
 import { usePostCard, useCreatePostContext } from "../../contexts/";
 import { postCardOptions } from "../../constants/postCardActionBtns";
 import { Avatar, CardHeader, IconButton, Box, Typography } from '@mui/material';
@@ -79,7 +80,10 @@ const PostCardHeader = ({ post, comment }) => {
                                                         payload: post.mediaLinks
                                                     }),
                                                     setShowEditPostBox(true)
-                                                ) : ""
+                                                ) :
+                                                dispatch(deletePost({
+                                                    postId: post._id
+                                                }))
                                     }>
                                     {
                                         post.username === loggedInUser.userName ?

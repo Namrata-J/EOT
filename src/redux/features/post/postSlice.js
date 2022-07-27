@@ -75,6 +75,19 @@ const editPost = createAsyncThunk("posts/editPost", async ({ postId, editedPostD
     }
 });
 
+const deletePost = createAsyncThunk("posts/deletePost", async ({ postId }) => {
+    try {
+        const response = await axios.delete(`/api/posts/${postId}`,
+            {
+                headers: { authorization: encodedToken }
+            }
+        );
+        return response.data.posts
+    } catch (error) {
+        return error
+    }
+});
+
 const postSlice = createSlice({
     name: "posts",
     initialState,
@@ -138,10 +151,22 @@ const postSlice = createSlice({
             state.loading = false
             state.posts = []
             state.error = "ERROR_OCCURRED"
+        },
+        [deletePost.pending]: (state) => {
+            state.loading = true;
+        },
+        [deletePost.fulfilled]: (state, action) => {
+            state.loading = false
+            state.posts = action.payload
+        },
+        [deletePost.rejected]: (state) => {
+            state.loading = false
+            state.posts = []
+            state.error = "ERROR_OCCURRED"
         }
     }
 });
 
-export { createPost, getAllPosts, likePost, dislikePost, editPost };
+export { createPost, getAllPosts, likePost, dislikePost, editPost, deletePost };
 const { reducer } = postSlice;
 export { reducer };
