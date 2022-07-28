@@ -1,7 +1,7 @@
 import { sideBarLinks } from "../../constants/sideBarLinks";
+import { Link } from "react-router-dom";
 import {
     List,
-    Link,
     ListItem,
     ListItemButton,
     ListItemIcon,
@@ -22,7 +22,7 @@ const SideBarList = () => {
                 }}>
                 {
                     sideBarLinks.map((path, index) =>
-                        <Link key={index} href={path.pathLink}>
+                        <Link key={index} to={path.pathLink} style={{ textDecoration: 'none' }} >
                             <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemIcon
