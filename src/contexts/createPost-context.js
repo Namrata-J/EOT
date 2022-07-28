@@ -91,7 +91,6 @@ const CreatePostProvider = ({ children }) => {
     };
 
     const onCommentBoxEmojiClick = (event, emojiObject) => {
-        console.log(emojiObject)
         setChosenEmojiForCommentBox(emojiObject.emoji);
     };
 
