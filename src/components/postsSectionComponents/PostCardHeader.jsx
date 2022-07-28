@@ -47,8 +47,9 @@ const PostCardHeader = ({ post, comment }) => {
                             p: 1,
                         }}>
                         {
-                            postCardOptions.map((option) =>
+                            postCardOptions.map((option, index) =>
                                 <Typography
+                                    key={index}
                                     sx={{
                                         fontSize: { xs: '0.8rem', md: '0.9rem' }
                                     }}
