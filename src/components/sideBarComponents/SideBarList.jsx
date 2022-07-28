@@ -5,7 +5,8 @@ import {
     ListItem,
     ListItemButton,
     ListItemIcon,
-    ListItemText
+    ListItemText,
+    Typography
 } from '@mui/material';
 
 const SideBarList = () => {
@@ -24,8 +25,25 @@ const SideBarList = () => {
                         <Link key={index} href={path.pathLink}>
                             <ListItem disablePadding>
                                 <ListItemButton>
-                                    <ListItemIcon>{path.pathIcon}</ListItemIcon>
-                                    <ListItemText primary={path.pathName} />
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: {
+                                                sm: '46px',
+                                                lg: '56px'
+                                            }
+                                        }}>{path.pathIcon}</ListItemIcon>
+                                    <ListItemText
+                                        disableTypography
+                                        primary={
+                                            <Typography
+                                                type="body1"
+                                                sx={{
+                                                    color: 'otherColors.lightGray',
+                                                    fontSize: { sm: '0.9rem', md: '1rem' }
+                                                }}>
+                                                {path.pathName}
+                                            </Typography>}
+                                    />
                                 </ListItemButton>
                             </ListItem>
                         </Link>

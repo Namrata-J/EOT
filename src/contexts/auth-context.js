@@ -1,3 +1,4 @@
+import { SIGNUP_EMAIL, LOGIN_EMAIL, SIGNUP_PWD, LOGIN_PWD } from "../constants/authCardConstants";
 import { initialHelperText } from "../constants/authCardHelperText";
 import { useState, createContext, useContext } from "react";
 import { useDispatch } from "react-redux";
@@ -18,11 +19,11 @@ const AuthProvider = ({ children }) => {
 
     const errorAttr = (uniqueId, text) => {
         switch (uniqueId) {
-            case "SIGNUP_EMAIL":
-            case "LOGIN_EMAIL":
+            case SIGNUP_EMAIL:
+            case LOGIN_EMAIL:
                 return text === '' || text === initialHelperText.email ? false : true
-            case "SIGNUP_PWD":
-            case "LOGIN_PWD":
+            case SIGNUP_PWD:
+            case LOGIN_PWD:
                 return text === '' || text === initialHelperText.pwd ? false : true
             default:
                 return false
@@ -31,19 +32,19 @@ const AuthProvider = ({ children }) => {
 
     const handleChange = (e, uniqueId) => {
         switch (uniqueId) {
-            case "SIGNUP_EMAIL":
+            case SIGNUP_EMAIL:
                 dispatch(setSignUpEmailHelperText(""))
                 setUserSignUpForm({ ...userSignUpForm, userEmail: e.target.value })
                 break;
-            case "SIGNUP_PWD":
+            case SIGNUP_PWD:
                 dispatch(setSignUpPwdHelperText(""))
                 setUserSignUpForm({ ...userSignUpForm, userPwd: e.target.value })
                 break;
-            case "LOGIN_EMAIL":
+            case LOGIN_EMAIL:
                 dispatch(setLogInEmailHelperText(""))
                 setUserLogInForm({ ...userLogInForm, userEmail: e.target.value })
                 break;
-            case "LOGIN_PWD":
+            case LOGIN_PWD:
                 dispatch(setLogInPwdHelperText(""))
                 setUserLogInForm({ ...userLogInForm, userPwd: e.target.value })
                 break;

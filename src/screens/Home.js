@@ -7,13 +7,14 @@ const HomePage = () => {
             <utilComp.Header />
             <Box
                 sx={{
-                    p: 3,
+                    p: { sm: 1, md: 2, lg: 3 },
                     display: "flex",
                     width: "100%",
-                    height: "91vh"
+                    height: { xs: "92vh", sm: "90vh", md: "88vh" }
                 }}>
                 <utilComp.SideBar />
                 <utilComp.ContentSection />
+                <utilComp.FollowRecommendationSection />
             </Box>
         </utilComp.PageContainer>
     );

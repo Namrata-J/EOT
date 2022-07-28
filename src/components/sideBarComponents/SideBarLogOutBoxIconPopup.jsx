@@ -18,12 +18,13 @@ const SideBarLogOutBoxIconPopup = () => {
                 position: "absolute",
                 display: sideBarLogoutPopupDisplay,
                 bottom: "4rem",
-                right: "1rem",
-                p: 2
+                right: { xs: "0.5rem", md: "0rem", lg: "1rem" },
+                p: { xs: 1, lg: 2 }
             }}>
             <Typography
                 sx={{
-                    lineHeight: "2rem"
+                    lineHeight: { xs: "1.5rem", md: "2rem" },
+                    fontSize: { xs: "0.8rem", md: "1rem" }
                 }}>
                 @{loggedInUser.userName}
             </Typography>
@@ -41,7 +42,7 @@ const SideBarLogOutBoxIconPopup = () => {
                         }
                     }}>
                     LogOut
-                    <LogoutIcon sx={{ fontSize: "medium" }} />
+                    <LogoutIcon sx={{ fontSize: { xs: "small", md: "medium" } }} />
                 </Typography>
             </Link>
         </Box>
