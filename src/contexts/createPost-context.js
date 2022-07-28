@@ -16,12 +16,14 @@ const CreatePostProvider = ({ children }) => {
 
     const initialcreatePostState = {
         content: "",
-        mediaLinks: []
+        mediaLinks: [],
+        tags: ["NEW"]
     };
 
     const initialCommentState = {
         content: "",
-        mediaLinks: []
+        mediaLinks: [],
+        tags: ["NEW"]
     };
 
     const createPostReducer = (state, action) => {

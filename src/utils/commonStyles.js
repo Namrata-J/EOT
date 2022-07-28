@@ -231,3 +231,20 @@ export const commentCardActionIcon = {
 export const recommendationSection = {
     width: { md: '14rem', lg: '18rem' }
 }
+
+export const pageBoxStyling = {
+    p: { sm: 1, md: 2, lg: 3 },
+    display: "flex",
+    width: "100%",
+    height: { xs: "92vh", sm: "90vh", md: "88vh" }
+}
+
+export const chip = {
+    cursor: 'pointer',
+    p: '0.5rem 1rem',
+    backgroundColor: 'primary.main',
+    color: 'otherColors.lightestGray',
+    borderRadius: 2,
+    fontSize: { xs: '0.8rem', md: '0.9rem', lg: '1rem' },
+    fontFamily: 'Gruppo',
+}
