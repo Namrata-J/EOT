@@ -34,6 +34,7 @@ const signUpHandler = createAsyncThunk("auth/signUp", async ({ userEmail, userPw
                     });
                     localStorage.setItem("token", response.data.encodedToken);
                     localStorage.setItem("loggedInUserId", response.data.createdUser._id);
+                    window.location.reload()
                     return response.data;
                 } catch (error) {
                     console.log("ERROR OCCURRED");
@@ -61,6 +62,7 @@ const logInHandler = createAsyncThunk("auth/logIn", async ({ userEmail, userPwd 
                     });
                     localStorage.setItem("token", response.data.encodedToken);
                     localStorage.setItem("loggedInUserId", response.data.foundUser._id);
+                    window.location.reload()
                     return response.data
                 } catch (error) {
                     console.log("ERROR OCCURRED");
@@ -85,6 +87,7 @@ const guestLogInHandler = createAsyncThunk("auth/guestLogIn", async (thunkAPI) =
         });
         localStorage.setItem("token", response.data.encodedToken);
         localStorage.setItem("loggedInUserId", response.data.foundUser._id);
+        window.location.reload()
         return response.data
     } catch (error) {
         console.log("ERROR OCCURRED");
