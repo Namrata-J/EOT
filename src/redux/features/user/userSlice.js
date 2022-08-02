@@ -29,7 +29,7 @@ const getSelectedUser = createAsyncThunk("user/user", async (userId) => {
     }
 });
 
-const saveUserEditDetails = createAsyncThunk("user/editUserDetail", async ({editedUserData}) => {
+const saveUserEditDetails = createAsyncThunk("user/editUserDetail", async ({ editedUserData }) => {
     try {
         const response = await axios.post(`/api/users/edit`,
             {
@@ -57,7 +57,7 @@ const getAllUserBookmarks = createAsyncThunk("user/userBookmarks", async () => {
     }
 });
 
-const addToUserBookmarks = createAsyncThunk("user/addToBookmark", async (postId) => {
+const addToUserBookmarks = createAsyncThunk("user/addToBookmark", async ({ postId }) => {
     try {
         const response = await axios.post(`/api/users/bookmark/${postId}`,
             {},
@@ -71,7 +71,7 @@ const addToUserBookmarks = createAsyncThunk("user/addToBookmark", async (postId)
     }
 });
 
-const removeFromUserBookmarks = createAsyncThunk("user/removeFromBookmark", async (postId) => {
+const removeFromUserBookmarks = createAsyncThunk("user/removeFromBookmark", async ({ postId }) => {
     try {
         const response = await axios.post(`/api/users/remove-bookmark/${postId}`,
             {},
@@ -122,7 +122,7 @@ const userSlice = createSlice({
         },
         [getAllUsers.fulfilled]: (state, action) => {
             state.loading = false
-            state.users = action.payload
+            state.users = action.payload.length? action.payload : []
         },
         [getAllUsers.rejected]: (state) => {
             state.loading = false
@@ -158,11 +158,11 @@ const userSlice = createSlice({
         },
         [getAllUserBookmarks.fulfilled]: (state, action) => {
             state.loading = false
-            state.bookmarks = action.payload
+            state.bookmarks = action.payload.length? action.payload : []
         },
         [getAllUserBookmarks.rejected]: (state) => {
             state.loading = false
-            state.bookmarks = {}
+            state.bookmarks = []
             state.error = "ERROR_OCCURRED"
         },
         [addToUserBookmarks.pending]: (state) => {
@@ -174,7 +174,7 @@ const userSlice = createSlice({
         },
         [addToUserBookmarks.rejected]: (state) => {
             state.loading = false
-            state.bookmarks = {}
+            state.bookmarks = []
             state.error = "ERROR_OCCURRED"
         },
         [removeFromUserBookmarks.pending]: (state) => {
@@ -186,7 +186,7 @@ const userSlice = createSlice({
         },
         [removeFromUserBookmarks.rejected]: (state) => {
             state.loading = false
-            state.bookmarks = {}
+            state.bookmarks = []
             state.error = "ERROR_OCCURRED"
         },
         [followTheUser.pending]: (state) => {

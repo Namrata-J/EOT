@@ -55,7 +55,7 @@ const PostCardHeader = ({ post, comment }) => {
                                     }}
                                     onClick={() =>
                                         option.optionStr === "FOLLOW_USER" ?
-                                            loggedInUser.following.some((user) => user.userName === post.username) ?
+                                            loggedInUser?.following?.some((user) => user.userName === post.username) ?
                                                 dispatch(
                                                     unfollowTheUser(
                                                         {
@@ -87,12 +87,12 @@ const PostCardHeader = ({ post, comment }) => {
                                                 }))
                                     }>
                                     {
-                                        post.username === loggedInUser.userName ?
+                                        post.username === loggedInUser?.userName ?
                                             option.optionStr === "FOLLOW_USER" ?
                                                 "" : option.optionName :
                                             option.optionStr !== "FOLLOW_USER" ?
                                                 "" :
-                                                loggedInUser.following.some((user) => user.userName === post.username) ?
+                                                loggedInUser?.following?.some((user) => user.userName === post.username) ?
                                                     "Following" : option.optionName
                                     }
                                 </Typography>

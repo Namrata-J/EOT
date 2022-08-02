@@ -155,7 +155,7 @@ export const getBookmarkPostsHandler = function (schema, request) {
 
 export const clearAllPostBookmarkHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
-
+  console.log("hello")
   try {
     if (!user) {
       return new Response(

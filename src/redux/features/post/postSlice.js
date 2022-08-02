@@ -107,7 +107,7 @@ const postSlice = createSlice({
         },
         [createPost.fulfilled]: (state, action) => {
             state.loading = false
-            state.posts = action.payload
+            state.posts = action.payload.length? action.payload : []
         },
         [createPost.rejected]: (state) => {
             state.loading = false
@@ -119,7 +119,7 @@ const postSlice = createSlice({
         },
         [getAllPosts.fulfilled]: (state, action) => {
             state.loading = false
-            state.posts = action.payload
+            state.posts = action.payload.length? action.payload : []
         },
         [getAllPosts.rejected]: (state) => {
             state.loading = false
@@ -179,7 +179,7 @@ const postSlice = createSlice({
         },
         [getAllPostsOfAUser.fulfilled]: (state, action) => {
             state.loading = false
-            state.userPosts = action.payload
+            state.userPosts = action.payload.length? action.payload : []
         },
         [getAllPostsOfAUser.rejected]: (state) => {
             state.loading = false

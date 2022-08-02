@@ -1,5 +1,6 @@
 import { sideBarLinks } from "../../constants/sideBarLinks";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
     List,
     ListItem,
@@ -10,6 +11,9 @@ import {
 } from '@mui/material';
 
 const SideBarList = () => {
+
+    const { loggedInUser } = useSelector((store) => store.user);
+
     return (
         <nav>
             <List
@@ -22,7 +26,14 @@ const SideBarList = () => {
                 }}>
                 {
                     sideBarLinks.map((path, index) =>
-                        <Link key={index} to={path.pathLink} style={{ textDecoration: 'none' }} >
+                        <Link
+                            key={index}
+                            to={
+                                path.pathName === "Profile" ?
+                                    `${path.pathLink}/${loggedInUser?._id}` :
+                                    path.pathLink
+                            }
+                            style={{ textDecoration: 'none' }} >
                             <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemIcon
