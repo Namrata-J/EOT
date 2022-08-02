@@ -29,7 +29,7 @@ const getSelectedUser = createAsyncThunk("user/user", async (userId) => {
     }
 });
 
-const saveUserEditDetails = createAsyncThunk("user/editUserDetail", async (editedUserData) => {
+const saveUserEditDetails = createAsyncThunk("user/editUserDetail", async ({editedUserData}) => {
     try {
         const response = await axios.post(`/api/users/edit`,
             {

@@ -1,16 +1,18 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Box, TextField } from '@mui/material';
 import { recommendationSection } from "../../utils/commonStyles";
 import { getAllUsers } from "../../redux/features/user/userSlice";
 import { RecommendationCardListing } from "../recommendationCard/";
 
 const FollowRecommendationSection = () => {
+
+    const { loggedInUser } = useSelector((store) => store.user);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getAllUsers())
-    }, [dispatch]);
+    }, [loggedInUser, dispatch]);
 
     return (
         <Box

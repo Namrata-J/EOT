@@ -5,6 +5,7 @@ const encodedToken = localStorage.getItem("token");
 
 const initialState = {
     loading: false,
+    userPosts: [],
     posts: encodedToken ? [] : [],
     error: ""
 };
@@ -18,6 +19,15 @@ const createPost = createAsyncThunk("posts/createPost", async (createdPost) => {
             {
                 headers: { authorization: encodedToken }
             });
+        return response.data.posts
+    } catch (error) {
+        return error
+    }
+});
+
+const getAllPostsOfAUser = createAsyncThunk("posts/userPosts", async ({username}) => {
+    try {
+        const response = await axios.get(`/api/posts/user/${username}`);
         return response.data.posts
     } catch (error) {
         return error
@@ -163,10 +173,22 @@ const postSlice = createSlice({
             state.loading = false
             state.posts = []
             state.error = "ERROR_OCCURRED"
+        },
+        [getAllPostsOfAUser.pending]: (state) => {
+            state.loading = true;
+        },
+        [getAllPostsOfAUser.fulfilled]: (state, action) => {
+            state.loading = false
+            state.userPosts = action.payload
+        },
+        [getAllPostsOfAUser.rejected]: (state) => {
+            state.loading = false
+            state.userPosts = []
+            state.error = "ERROR_OCCURRED"
         }
     }
 });
 
-export { createPost, getAllPosts, likePost, dislikePost, editPost, deletePost };
+export { createPost, getAllPosts, likePost, dislikePost, editPost, deletePost, getAllPostsOfAUser };
 const { reducer } = postSlice;
 export { reducer };

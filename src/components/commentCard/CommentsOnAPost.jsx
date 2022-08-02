@@ -1,13 +1,36 @@
 import { PostCardHeader, PostCardContent } from "../postsSectionComponents/";
+import { editComment } from "../../redux/features/comment/commentSlice";
+import { useCreatePostContext, useModal } from "../../contexts/";
 import { CreatePostCard } from "../createPostComponents/";
-import { useCreatePostContext } from "../../contexts/";
+import { useSelector, useDispatch } from 'react-redux';
 import { card } from "../../utils/commonStyles";
 import { Box, Card } from '@mui/material';
 import { CommentCardActions } from "./";
+import { useEffect } from "react";
 
 const CommentsOnAPost = (post) => {
 
+    const { loggedInUser } = useSelector((store) => store.user);
     const { editBoxWithCommentId } = useCreatePostContext();
+    const { editProfileState } = useModal();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        post.comments.map((comment) => comment.username === loggedInUser.userName ?
+            dispatch(editComment(
+                {
+                    postId: post._id,
+                    commentId: comment._id,
+                    editedData: {
+                        profilePic: editProfileState.profilePic,
+                        firstName: editProfileState.firstName,
+                        lastName: editProfileState.lastName,
+                    }
+                }
+            )) : ""
+        )
+        // eslint-disable-next-line
+    }, [loggedInUser, dispatch]);
 
     return (
         <Box>
