@@ -7,7 +7,7 @@ import { useSideBar } from "../../contexts/";
 
 const SideBarLogOutBoxIconPopup = () => {
 
-    const { loggedInUser } = useSelector((store) => store.user)
+    const { loggedInUser } = useSelector((store) => store.user);
     const { sideBarLogoutPopupDisplay } = useSideBar();
 
     return (

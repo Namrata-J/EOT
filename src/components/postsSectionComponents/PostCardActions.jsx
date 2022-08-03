@@ -34,7 +34,7 @@ const PostCardActions = ({ post }) => {
                                 cardIcon.iconName === "LIKE_POST"
                             ) ||
                                 (
-                                    bookmarks.some((bookmarkPost) => bookmarkPost._id === post._id) &&
+                                    bookmarks?.length && bookmarks?.some((bookmarkPost) => bookmarkPost._id === post._id) &&
                                     cardIcon.iconName === "BOOKMARK_POST"
                                 ) ?
                                 {
@@ -64,7 +64,7 @@ const PostCardActions = ({ post }) => {
                                             setShowEmojiPicker(false)
                                         ) :
                                     cardIcon.iconName === "BOOKMARK_POST" ?
-                                        bookmarks.some((bookmarkPost) => bookmarkPost._id === post._id) ?
+                                        bookmarks?.length && bookmarks.some((bookmarkPost) => bookmarkPost._id === post._id) ?
                                             dispatch(removeFromUserBookmarks(post._id)) :
                                             dispatch(addToUserBookmarks(post._id)) : ""
                         }>

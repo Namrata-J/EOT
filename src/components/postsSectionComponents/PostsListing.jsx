@@ -40,10 +40,10 @@ const PostsListing = () => {
             }}>
             {
                 location.pathname === "/home" ?
-                    posts.map((post, index) => <PostCard key={index} {...post} />) :
+                    posts?.map((post, index) => <PostCard key={index} {...post} />) :
                     location.pathname === "/explore" ?
-                        filteredPosts.map((post, index) => <PostCard key={index} {...post} />) :
-                        bookmarks.length === 0 ?
+                        filteredPosts?.map((post, index) => <PostCard key={index} {...post} />) :
+                        bookmarks?.length === 0 ?
                             <Typography sx={{
                                 textAlign: 'center',
                                 pt: 10,
@@ -51,7 +51,7 @@ const PostsListing = () => {
                             }}>
                                 No posts are bookmarked yet
                             </Typography> :
-                            bookmarks.map((post, index) => <PostCard key={index} {...post} />)
+                            bookmarks?.length && bookmarks?.map((post, index) => <PostCard key={index} {...post} />)
             }
         </Box>
     );
