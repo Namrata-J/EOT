@@ -162,7 +162,7 @@ const userSlice = createSlice({
         },
         [getAllUserBookmarks.rejected]: (state) => {
             state.loading = false
-            state.bookmarks = {}
+            state.bookmarks = []
             state.error = "ERROR_OCCURRED"
         },
         [addToUserBookmarks.pending]: (state) => {
@@ -174,7 +174,7 @@ const userSlice = createSlice({
         },
         [addToUserBookmarks.rejected]: (state) => {
             state.loading = false
-            state.bookmarks = {}
+            state.bookmarks = []
             state.error = "ERROR_OCCURRED"
         },
         [removeFromUserBookmarks.pending]: (state) => {
@@ -186,7 +186,7 @@ const userSlice = createSlice({
         },
         [removeFromUserBookmarks.rejected]: (state) => {
             state.loading = false
-            state.bookmarks = {}
+            state.bookmarks = []
             state.error = "ERROR_OCCURRED"
         },
         [followTheUser.pending]: (state) => {
