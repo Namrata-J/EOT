@@ -8,20 +8,22 @@ import { editPost } from "../../redux/features/post/postSlice";
 
 const UserPosts = ({ userPosts }) => {
 
+    const { encodedToken } = useSelector((store) => store.auth);
     const { loggedInUser } = useSelector((store) => store.user);
     const { editProfileState } = useModal();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        userPosts.map((post) =>
+        userPosts?.map((post) =>
             dispatch(editPost(
                 {
                     postId: post._id,
                     editedPostData: {
-                        profilePic: editProfileState.profilePic,
-                        firstName: editProfileState.firstName,
-                        lastName: editProfileState.lastName,
-                    }
+                        profilePic: editProfileState?.profilePic,
+                        firstName: editProfileState?.firstName,
+                        lastName: editProfileState?.lastName,
+                    },
+                    encodedToken: encodedToken
                 }
             ))
         )

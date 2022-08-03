@@ -1,11 +1,12 @@
 import { Button } from '@mui/material';
-import { useDispatch } from 'react-redux';
 import { useModal } from "../../contexts/";
+import { useDispatch, useSelector } from 'react-redux';
 import { ModalActionBtnStyle } from "../../utils/commonStyles";
 import { saveUserEditDetails } from "../../redux/features/user/userSlice";
 
 const ModalActionBtn = ({ btnText }) => {
 
+    const { encodedToken } = useSelector((store) => store.auth);
     const { handleCloseModal, editProfileState } = useModal();
     const dispatch = useDispatch();
 
@@ -14,7 +15,12 @@ const ModalActionBtn = ({ btnText }) => {
             onClick={
                 () => btnText === "SAVE" ?
                     (
-                        dispatch(saveUserEditDetails({ editedUserData: editProfileState })),
+                        dispatch(saveUserEditDetails(
+                            {
+                                editedUserData: editProfileState,
+                                encodedToken: encodedToken
+                            }
+                        )),
                         handleCloseModal()
                     ) :
                     handleCloseModal()

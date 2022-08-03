@@ -1,10 +1,11 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { followTheUser } from "../../redux/features/user/userSlice";
 import { Card, Avatar, CardHeader, Typography } from '@mui/material';
 import { card } from "../../utils/commonStyles";
 
 const RecommendationCard = ({ user }) => {
 
+    const { encodedToken } = useSelector((store) => store.auth); 
     const dispatch = useDispatch();
 
     return (
@@ -65,7 +66,8 @@ const RecommendationCard = ({ user }) => {
                             () => dispatch(
                                 followTheUser(
                                     {
-                                        followUsername: user.userName
+                                        followUsername: user.userName,
+                                        encodedToken: encodedToken
                                     }
                                 )
                             )

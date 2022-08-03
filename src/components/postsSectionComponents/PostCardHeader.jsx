@@ -12,6 +12,7 @@ const PostCardHeader = ({ post, comment }) => {
 
     const { setCommentDialogOfCardWithId, dispatchOfCommentState } = useCreatePostContext();
     const { stateOfPostCard, dispatchOfPostCard, setShowEditPostBox } = usePostCard();
+    const { encodedToken } = useSelector((store) => store.auth);
     const { loggedInUser } = useSelector((store) => store.user);
     const dispatch = useDispatch();
 
@@ -59,13 +60,15 @@ const PostCardHeader = ({ post, comment }) => {
                                                 dispatch(
                                                     unfollowTheUser(
                                                         {
-                                                            followUsername: post.username
+                                                            followUsername: post.username,
+                                                            encodedToken: encodedToken
                                                         }
                                                     )
                                                 ) : dispatch(
                                                     followTheUser(
                                                         {
-                                                            followUsername: post.username
+                                                            followUsername: post.username,
+                                                            encodedToken: encodedToken
                                                         }
                                                     )
                                                 ) :
@@ -82,9 +85,12 @@ const PostCardHeader = ({ post, comment }) => {
                                                     }),
                                                     setShowEditPostBox(true)
                                                 ) :
-                                                dispatch(deletePost({
-                                                    postId: post._id
-                                                }))
+                                                dispatch(deletePost(
+                                                    {
+                                                        postId: post._id,
+                                                        encodedToken: encodedToken
+                                                    }
+                                                ))
                                     }>
                                     {
                                         post.username === loggedInUser.userName ?

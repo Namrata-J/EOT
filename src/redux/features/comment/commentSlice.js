@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// eslint-disable-next-line
 const encodedToken = localStorage.getItem("token");
 
 const initialState = {
@@ -9,7 +10,7 @@ const initialState = {
     error: ""
 };
 
-const addComment = createAsyncThunk("comments/addComment", async ({ postId, commentData }) => {
+const addComment = createAsyncThunk("comments/addComment", async ({ postId, commentData, encodedToken }) => {
     try {
         const response = await axios.post(`/api/comments/add/${postId}`,
             {
@@ -34,7 +35,7 @@ const getCommentsOfAPost = createAsyncThunk("comments/commentsOfAPost", async (p
     }
 });
 
-const upVoteComment = createAsyncThunk("comments/upVoteComment", async ({ postId, commentId }) => {
+const upVoteComment = createAsyncThunk("comments/upVoteComment", async ({ postId, commentId, encodedToken }) => {
     try {
         const response = await axios.post(`/api/comments/upvote/${postId}/${commentId}`,
             {},
@@ -48,7 +49,7 @@ const upVoteComment = createAsyncThunk("comments/upVoteComment", async ({ postId
     }
 });
 
-const downVoteComment = createAsyncThunk("comments/downVoteComment", async ({ postId, commentId }) => {
+const downVoteComment = createAsyncThunk("comments/downVoteComment", async ({ postId, commentId, encodedToken }) => {
     try {
         const response = await axios.post(`/api/comments/downvote/${postId}/${commentId}`,
             {},
@@ -62,7 +63,7 @@ const downVoteComment = createAsyncThunk("comments/downVoteComment", async ({ po
     }
 });
 
-const deleteComment = createAsyncThunk("comments/deleteComment", async ({ postId, commentId }) => {
+const deleteComment = createAsyncThunk("comments/deleteComment", async ({ postId, commentId, encodedToken }) => {
     try {
         const response = await axios.delete(`/api/comments/delete/${postId}/${commentId}`,
             {
@@ -75,7 +76,7 @@ const deleteComment = createAsyncThunk("comments/deleteComment", async ({ postId
     }
 });
 
-const editComment = createAsyncThunk("comments/editComment", async ({ postId, commentId, editedData }) => {
+const editComment = createAsyncThunk("comments/editComment", async ({ postId, commentId, editedData, encodedToken }) => {
     try {
         const response = await axios.post(`/api/comments/edit/${postId}/${commentId}`,
             {

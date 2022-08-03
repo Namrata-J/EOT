@@ -9,6 +9,7 @@ const initialState = {
     error: ""
 };
 
+// eslint-disable-next-line
 const encodedToken = localStorage.getItem("token");
 
 const getAllUsers = createAsyncThunk("user/users", async () => {
@@ -29,7 +30,7 @@ const getSelectedUser = createAsyncThunk("user/user", async (userId) => {
     }
 });
 
-const saveUserEditDetails = createAsyncThunk("user/editUserDetail", async ({editedUserData}) => {
+const saveUserEditDetails = createAsyncThunk("user/editUserDetail", async ({ editedUserData, encodedToken }) => {
     try {
         const response = await axios.post(`/api/users/edit`,
             {
@@ -44,7 +45,7 @@ const saveUserEditDetails = createAsyncThunk("user/editUserDetail", async ({edit
     }
 });
 
-const getAllUserBookmarks = createAsyncThunk("user/userBookmarks", async () => {
+const getAllUserBookmarks = createAsyncThunk("user/userBookmarks", async ({ encodedToken }) => {
     try {
         const response = await axios.get(`/api/users/bookmark/`,
             {
@@ -57,7 +58,7 @@ const getAllUserBookmarks = createAsyncThunk("user/userBookmarks", async () => {
     }
 });
 
-const addToUserBookmarks = createAsyncThunk("user/addToBookmark", async (postId) => {
+const addToUserBookmarks = createAsyncThunk("user/addToBookmark", async ({ postId, encodedToken }) => {
     try {
         const response = await axios.post(`/api/users/bookmark/${postId}`,
             {},
@@ -71,7 +72,7 @@ const addToUserBookmarks = createAsyncThunk("user/addToBookmark", async (postId)
     }
 });
 
-const removeFromUserBookmarks = createAsyncThunk("user/removeFromBookmark", async (postId) => {
+const removeFromUserBookmarks = createAsyncThunk("user/removeFromBookmark", async ({ postId, encodedToken }) => {
     try {
         const response = await axios.post(`/api/users/remove-bookmark/${postId}`,
             {},
@@ -85,7 +86,7 @@ const removeFromUserBookmarks = createAsyncThunk("user/removeFromBookmark", asyn
     }
 });
 
-const followTheUser = createAsyncThunk("user/followUser", async ({ followUsername }) => {
+const followTheUser = createAsyncThunk("user/followUser", async ({ followUsername, encodedToken }) => {
     try {
         const response = await axios.post(`/api/users/follow/${followUsername}`,
             {},
@@ -99,7 +100,7 @@ const followTheUser = createAsyncThunk("user/followUser", async ({ followUsernam
     }
 });
 
-const unfollowTheUser = createAsyncThunk("user/unfollowUser", async ({ followUsername }) => {
+const unfollowTheUser = createAsyncThunk("user/unfollowUser", async ({ followUsername, encodedToken }) => {
     try {
         const response = await axios.post(`/api/users/unfollow/${followUsername}`,
             {},

@@ -10,6 +10,7 @@ import { useEffect } from "react";
 
 const CommentsOnAPost = (post) => {
 
+    const { encodedToken } = useSelector((store) => store.auth);
     const { loggedInUser } = useSelector((store) => store.user);
     const { editBoxWithCommentId } = useCreatePostContext();
     const { editProfileState } = useModal();
@@ -25,7 +26,8 @@ const CommentsOnAPost = (post) => {
                         profilePic: editProfileState.profilePic,
                         firstName: editProfileState.firstName,
                         lastName: editProfileState.lastName,
-                    }
+                    },
+                    encodedToken: encodedToken
                 }
             )) : ""
         )

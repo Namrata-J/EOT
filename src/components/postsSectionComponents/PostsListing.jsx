@@ -11,6 +11,7 @@ import { getAllUserBookmarks } from "../../redux/features/user/userSlice";
 
 const PostsListing = () => {
 
+    const { encodedToken } = useSelector((store) => store.auth);
     const { bookmarks } = useSelector((store) => store.user);
     const { comments } = useSelector((store) => store.comment);
     const { posts } = useSelector((store) => store.post);
@@ -26,7 +27,9 @@ const PostsListing = () => {
     }, [comments, dispatch]);
 
     useEffect(() => {
-        dispatch(getAllUserBookmarks());
+        dispatch(getAllUserBookmarks({
+            encodedToken: encodedToken
+        }));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch]);
 

@@ -10,7 +10,7 @@ const initialState = {
     error: ""
 };
 
-const createPost = createAsyncThunk("posts/createPost", async (createdPost) => {
+const createPost = createAsyncThunk("posts/createPost", async ({ createdPost, encodedToken }) => {
     try {
         const response = await axios.post(`/api/posts`,
             {
@@ -25,7 +25,7 @@ const createPost = createAsyncThunk("posts/createPost", async (createdPost) => {
     }
 });
 
-const getAllPostsOfAUser = createAsyncThunk("posts/userPosts", async ({username}) => {
+const getAllPostsOfAUser = createAsyncThunk("posts/userPosts", async ({ username }) => {
     try {
         const response = await axios.get(`/api/posts/user/${username}`);
         return response.data.posts
@@ -34,7 +34,7 @@ const getAllPostsOfAUser = createAsyncThunk("posts/userPosts", async ({username}
     }
 });
 
-const likePost = createAsyncThunk("posts/likePost", async (postId) => {
+const likePost = createAsyncThunk("posts/likePost", async ({ postId, encodedToken }) => {
     try {
         const response = await axios.post(`/api/posts/like/${postId}`,
             {},
@@ -47,7 +47,7 @@ const likePost = createAsyncThunk("posts/likePost", async (postId) => {
     }
 });
 
-const dislikePost = createAsyncThunk("posts/dislikePost", async (postId) => {
+const dislikePost = createAsyncThunk("posts/dislikePost", async ({ postId, encodedToken }) => {
     try {
         const response = await axios.post(`/api/posts/dislike/${postId}`,
             {},
@@ -69,7 +69,7 @@ const getAllPosts = createAsyncThunk("posts/getAllPosts", async () => {
     }
 });
 
-const editPost = createAsyncThunk("posts/editPost", async ({ postId, editedPostData }) => {
+const editPost = createAsyncThunk("posts/editPost", async ({ postId, editedPostData, encodedToken }) => {
     try {
         const response = await axios.post(`/api/posts/edit/${postId}`,
             {
@@ -85,7 +85,7 @@ const editPost = createAsyncThunk("posts/editPost", async ({ postId, editedPostD
     }
 });
 
-const deletePost = createAsyncThunk("posts/deletePost", async ({ postId }) => {
+const deletePost = createAsyncThunk("posts/deletePost", async ({ postId, encodedToken }) => {
     try {
         const response = await axios.delete(`/api/posts/${postId}`,
             {
