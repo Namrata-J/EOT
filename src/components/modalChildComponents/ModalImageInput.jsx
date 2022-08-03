@@ -37,7 +37,7 @@ const ModalImageInput = ({ coverPic, profilePic }) => {
     return (
         <Box>
             <Box
-                sx={!editProfileState.coverPic ?
+                sx={editProfileState.coverPic === editProfileState ?
                     {
                         ...profileCoverPicContainer,
                         backgroundImage: `url(${coverPic})`,
@@ -76,7 +76,7 @@ const ModalImageInput = ({ coverPic, profilePic }) => {
                 <Avatar
                     alt="user"
                     src={
-                        !editProfileState.profilePic ?
+                        editProfileState.profilePic === editProfileState ?
                             profilePic :
                             editProfileState.profilePic
                     }

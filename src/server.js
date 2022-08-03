@@ -105,7 +105,7 @@ export function makeServer({ environment = "development" } = {}) {
 
       // user routes (private)
       this.post("users/edit", editUserHandler.bind(this));
-      this.get("/users/bookmark/", getBookmarkPostsHandler.bind(this));
+      this.get("/users/bookmark", getBookmarkPostsHandler.bind(this));
       this.post("/users/bookmark/:postId/", bookmarkPostHandler.bind(this));
       this.post(
         "/users/remove-bookmark/:postId/",

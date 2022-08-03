@@ -1,11 +1,9 @@
 import { ModalBox, ModalTextField, ModalTextArea, ModalActionBtn, ModalImageInput } from "../components/modalChildComponents/";
-import { getSelectedUser } from "../redux/features/user/userSlice";
 import { INITIAL_EDIT_STATE } from "../constants/modalConstants";
 import { pageBoxStyling } from "../utils/commonStyles";
-import { useSelector, useDispatch } from "react-redux";
 import { Box, ButtonGroup } from '@mui/material';
-import { useParams } from "react-router-dom";
 import { utilComp } from "../components/";
+import { useSelector } from "react-redux";
 import { useModal } from "../contexts/";
 import { useEffect } from "react";
 
@@ -13,20 +11,14 @@ const ProfilePage = () => {
 
     const { loggedInUser } = useSelector((store) => store.user);
     const { dispatchOfEditProfile } = useModal();
-    const dispatch = useDispatch();
-    const { profileId } = useParams;
 
     useEffect(() => {
-        if (profileId === loggedInUser._id) {
-            dispatchOfEditProfile({
-                type: INITIAL_EDIT_STATE,
-                payload: loggedInUser
-            })
-        } else {
-            dispatch(getSelectedUser(profileId))
-        }
+        dispatchOfEditProfile({
+            type: INITIAL_EDIT_STATE,
+            payload: loggedInUser
+        })
         // eslint-disable-next-line
-    }, [loggedInUser, profileId]);
+    }, [loggedInUser]);
 
     return (
         <utilComp.PageContainer>

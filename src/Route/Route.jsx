@@ -11,7 +11,7 @@ const RouteComp = () => {
                 <Route path="/explore" element={<RequiresAuth><ExplorePage /></RequiresAuth>} />
                 <Route path="/bookmark" element={<RequiresAuth><BookmarkPage /></RequiresAuth>} />
                 <Route path="/notification" element={<RequiresAuth><NotificationPage /></RequiresAuth>} />
-                <Route path="/profile/:profileId" element={<RequiresAuth><ProfilePage /></RequiresAuth>} />
+                <Route path="/profile" element={<RequiresAuth><ProfilePage /></RequiresAuth>} />
                 <Route path="/signup" element={<Auth.SignUpPage />} />
                 <Route path="/login" element={<Auth.LogInPage />} />
                 <Route path="/logout" element={<Auth.LogOutPage />} />
