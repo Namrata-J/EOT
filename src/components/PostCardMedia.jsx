@@ -1,9 +1,8 @@
 import CardMedia from '@mui/material/CardMedia';
 
-const PostCardMedia = ({ image, index }) => {
+const PostCardMedia = ({ image }) => {
     return (
         <CardMedia
-            key={index}
             component="img"
             height='auto'
             image={image}

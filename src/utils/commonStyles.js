@@ -231,3 +231,89 @@ export const commentCardActionIcon = {
 export const recommendationSection = {
     width: { md: '14rem', lg: '18rem' }
 }
+
+export const pageBoxStyling = {
+    p: { sm: 1, md: 2, lg: 3 },
+    display: "flex",
+    width: "100%",
+    height: { xs: "92vh", sm: "90vh", md: "88vh" }
+}
+
+export const chip = {
+    cursor: 'pointer',
+    p: '0.5rem 1rem',
+    backgroundColor: 'primary.main',
+    color: 'otherColors.lightestGray',
+    borderRadius: 2,
+    fontSize: { xs: '0.8rem', md: '0.9rem', lg: '1rem' },
+    fontFamily: 'Gruppo',
+}
+
+export const profileCoverPicContainer = {
+    width: '100%',
+    minHeight: { xs: '6rem', sm: '8rem', lg: '10rem' },
+    borderRadius: { xs: '0.5rem', md: '1rem', lg: '1.2rem' },
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    position: 'relative'
+}
+
+export const profileAvatar = {
+    backgroundColor: 'primary.dark',
+    width: { xs: 50, sm: 60, md: 70, lg: 90 },
+    height: { xs: 50, sm: 60, md: 70, lg: 90 },
+    position: 'absolute',
+    bottom: { xs: '-1.5rem', sm: '-1.8rem', md: '-2rem', lg: '-2.5rem' },
+    left: { xs: '0.6rem', md: '1rem', lg: '1.5rem' },
+    border: '1px solid #2f293b'
+}
+
+export const profileInfoTextSize = {
+    fontSize: { xs: '0.8rem', md: '0.9rem', lg: '1rem' }
+}
+
+export const profileInfoLink = {
+    cursor: 'pointer',
+    display: 'inline-block',
+    color: 'otherColors.lightestPurple',
+    fontFamily: 'Gruppo',
+    mt: { xs: 0.8, md: 1 }
+}
+
+export const profilePageActionBtn = {
+    fontSize: { xs: '0.7rem', lg: '0.85rem' },
+    color: 'otherColors.lightestPurple',
+    position: 'absolute',
+    top: '0',
+    right: '0'
+}
+
+export const ModalTextFieldStyle = {
+    width: '100%',
+    mt: 1,
+    mb: 1,
+    input: {
+        borderRadius: 1,
+        backgroundColor: 'otherColors.transparentPurple',
+        color: 'otherColors.lightestGray'
+    }
+}
+
+export const ModalActionBtnStyle = {
+    border: '1px solid #56505a',
+    color: 'otherColors.lightestGray',
+    fontSize: { xs: '0.7rem', md: '0.8rem', lg: '1rem' },
+    mt: 2,
+}
+
+export const modalImageInputIcon = {
+    backgroundColor: '#1d162ee6',
+    color: 'otherColors.lightestGray',
+    position: 'absolute'
+}
+
+export const modalCoverPic = {
+    minHeight: '6rem',
+    borderRadius: 1,
+    m: '0.5rem 0rem'
+}

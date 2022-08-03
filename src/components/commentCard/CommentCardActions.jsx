@@ -8,6 +8,7 @@ import { upVoteComment, downVoteComment, deleteComment } from "../../redux/featu
 
 const CommentCardActions = ({ post, comment }) => {
 
+    const { encodedToken } = useSelector((store) => store.auth);
     const { loggedInUser } = useSelector((store) => store.user);
     const { setEditBoxWithCommentId, dispatchOfCommentState } = useCreatePostContext();
     const dispatch = useDispatch();
@@ -40,13 +41,15 @@ const CommentCardActions = ({ post, comment }) => {
                                     dispatch(downVoteComment(
                                         {
                                             postId: post._id,
-                                            commentId: comment._id
+                                            commentId: comment._id,
+                                            encodedToken: encodedToken
                                         })
                                     ) :
                                     dispatch(upVoteComment(
                                         {
                                             postId: post._id,
-                                            commentId: comment._id
+                                            commentId: comment._id,
+                                            encodedToken: encodedToken
                                         })
                                     ) :
                                 actionIcon.iconName === "EDIT_COMMENT" ?
@@ -58,7 +61,8 @@ const CommentCardActions = ({ post, comment }) => {
                                     dispatch(deleteComment(
                                         {
                                             postId: post._id,
-                                            commentId: comment._id
+                                            commentId: comment._id,
+                                            encodedToken: encodedToken
                                         })
                                     )
                         }

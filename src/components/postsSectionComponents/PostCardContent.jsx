@@ -16,19 +16,19 @@ const PostCardContent = ({ post, comment }) => {
             {
                 post ? post.mediaLinks && post.mediaLinks.map(
                     (image, index) =>
-                        <CardLink image={image} index={index} />
+                        <CardLink image={image} key={index} />
                 ) : comment.mediaLinks && comment.mediaLinks.map(
                     (image, index) =>
-                        <CardLink image={image} index={index} />
+                        <CardLink image={image} key={index} />
                 )
             }
             {
                 post ? post.media && post.media.map(
                     (image, index) =>
-                        <PostCardMedia image={image} index={index} />
+                        <PostCardMedia image={image} key={index} />
                 ) : comment.media && comment.media.map(
                     (image, index) =>
-                        <PostCardMedia image={image} index={index} />
+                        <PostCardMedia image={image} key={index} />
                 )
             }
         </CardContent>

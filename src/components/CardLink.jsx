@@ -1,9 +1,8 @@
 import { Link } from '@mui/material';
 
-const CardLink = ({ image, index }) => {
+const CardLink = ({ image }) => {
     return (
         <Link
-            key={index}
             href={image}
             fontFamily="Gruppo"
             color='otherColors.lightestGray'>

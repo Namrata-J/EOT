@@ -12,7 +12,9 @@ import {
   SideBarProvider,
   HeaderProvider,
   CreatePostProvider,
-  PostCardProvider
+  PostCardProvider,
+  FilterProvider,
+  ModalProvider
 } from "./contexts/";
 
 // Call make Server
@@ -31,7 +33,11 @@ root.render(
               <HeaderProvider>
                 <CreatePostProvider>
                   <PostCardProvider>
-                    <App />
+                    <FilterProvider>
+                      <ModalProvider>
+                        <App />
+                      </ModalProvider>
+                    </FilterProvider>
                   </PostCardProvider>
                 </CreatePostProvider>
               </HeaderProvider>

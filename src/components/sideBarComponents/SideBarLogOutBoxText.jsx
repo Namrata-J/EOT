@@ -14,7 +14,7 @@ const SideBarLogOutBoxText = () => {
                 fontSize: {
                     xs: "0.7rem",
                     md: "0.8rem",
-                    lg: "1rem"
+                    lg: "0.9rem"
                 }
             }}>
                 {loggedInUser.firstName} {loggedInUser.lastName}

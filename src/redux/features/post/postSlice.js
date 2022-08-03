@@ -5,11 +5,12 @@ const encodedToken = localStorage.getItem("token");
 
 const initialState = {
     loading: false,
+    userPosts: [],
     posts: encodedToken ? [] : [],
     error: ""
 };
 
-const createPost = createAsyncThunk("posts/createPost", async (createdPost) => {
+const createPost = createAsyncThunk("posts/createPost", async ({ createdPost, encodedToken }) => {
     try {
         const response = await axios.post(`/api/posts`,
             {
@@ -24,7 +25,16 @@ const createPost = createAsyncThunk("posts/createPost", async (createdPost) => {
     }
 });
 
-const likePost = createAsyncThunk("posts/likePost", async (postId) => {
+const getAllPostsOfAUser = createAsyncThunk("posts/userPosts", async ({ username }) => {
+    try {
+        const response = await axios.get(`/api/posts/user/${username}`);
+        return response.data.posts
+    } catch (error) {
+        return error
+    }
+});
+
+const likePost = createAsyncThunk("posts/likePost", async ({ postId, encodedToken }) => {
     try {
         const response = await axios.post(`/api/posts/like/${postId}`,
             {},
@@ -37,7 +47,7 @@ const likePost = createAsyncThunk("posts/likePost", async (postId) => {
     }
 });
 
-const dislikePost = createAsyncThunk("posts/dislikePost", async (postId) => {
+const dislikePost = createAsyncThunk("posts/dislikePost", async ({ postId, encodedToken }) => {
     try {
         const response = await axios.post(`/api/posts/dislike/${postId}`,
             {},
@@ -59,7 +69,7 @@ const getAllPosts = createAsyncThunk("posts/getAllPosts", async () => {
     }
 });
 
-const editPost = createAsyncThunk("posts/editPost", async ({ postId, editedPostData }) => {
+const editPost = createAsyncThunk("posts/editPost", async ({ postId, editedPostData, encodedToken }) => {
     try {
         const response = await axios.post(`/api/posts/edit/${postId}`,
             {
@@ -75,7 +85,7 @@ const editPost = createAsyncThunk("posts/editPost", async ({ postId, editedPostD
     }
 });
 
-const deletePost = createAsyncThunk("posts/deletePost", async ({ postId }) => {
+const deletePost = createAsyncThunk("posts/deletePost", async ({ postId, encodedToken }) => {
     try {
         const response = await axios.delete(`/api/posts/${postId}`,
             {
@@ -163,10 +173,22 @@ const postSlice = createSlice({
             state.loading = false
             state.posts = []
             state.error = "ERROR_OCCURRED"
+        },
+        [getAllPostsOfAUser.pending]: (state) => {
+            state.loading = true;
+        },
+        [getAllPostsOfAUser.fulfilled]: (state, action) => {
+            state.loading = false
+            state.userPosts = action.payload
+        },
+        [getAllPostsOfAUser.rejected]: (state) => {
+            state.loading = false
+            state.userPosts = []
+            state.error = "ERROR_OCCURRED"
         }
     }
 });
 
-export { createPost, getAllPosts, likePost, dislikePost, editPost, deletePost };
+export { createPost, getAllPosts, likePost, dislikePost, editPost, deletePost, getAllPostsOfAUser };
 const { reducer } = postSlice;
 export { reducer };

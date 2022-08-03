@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createPost, editPost } from "../../redux/features/post/postSlice";
 import { Button, IconButton, CardActions, } from '@mui/material';
 import { useCreatePostContext, usePostCard } from "../../contexts/";
@@ -20,6 +20,7 @@ const CreatePostCardActions = ({ btnType, post, comment }) => {
         showEmojiPicker,
         commentState } = useCreatePostContext();
     const { showEditPostBox, setShowEditPostBox } = usePostCard();
+    const { encodedToken } = useSelector((store) => store.auth);
     const dispatch = useDispatch();
 
     return (
@@ -82,7 +83,12 @@ const CreatePostCardActions = ({ btnType, post, comment }) => {
                 onClick={() =>
                     btnType === "POST" ?
                         (
-                            dispatch(createPost(createPostState)),
+                            dispatch(createPost(
+                                {
+                                    createdPost: createPostState,
+                                    encodedToken: encodedToken
+                                }
+                            )),
                             dispatchOfCreatePostState(
                                 {
                                     type: CREATE_POST_CLEAR
@@ -95,7 +101,8 @@ const CreatePostCardActions = ({ btnType, post, comment }) => {
                                     dispatch(editPost(
                                         {
                                             postId: post._id,
-                                            editedPostData: commentState
+                                            editedPostData: commentState,
+                                            encodedToken: encodedToken
                                         }
                                     )),
                                     dispatchOfCommentState(
@@ -110,7 +117,8 @@ const CreatePostCardActions = ({ btnType, post, comment }) => {
                                     dispatch(addComment(
                                         {
                                             postId: post._id,
-                                            commentData: commentState
+                                            commentData: commentState,
+                                            encodedToken: encodedToken
                                         }
                                     )),
                                     dispatchOfCommentState(
@@ -127,7 +135,8 @@ const CreatePostCardActions = ({ btnType, post, comment }) => {
                                     {
                                         postId: post._id,
                                         commentId: comment._id,
-                                        editedData: commentState
+                                        editedData: commentState,
+                                        encodedToken: encodedToken
                                     }
                                 )),
                                 dispatchOfCommentState(

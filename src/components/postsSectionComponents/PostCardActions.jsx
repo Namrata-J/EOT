@@ -18,6 +18,7 @@ const PostCardActions = ({ post }) => {
         setShowEmojiPicker } = useCreatePostContext();
     const { bookmarks } = useSelector((store) => store.user)
     const { loggedInUser } = useSelector((store) => store.user)
+    const { encodedToken } = useSelector((store) => store.auth);
 
     return (
         <CardActions disableSpacing
@@ -34,7 +35,7 @@ const PostCardActions = ({ post }) => {
                                 cardIcon.iconName === "LIKE_POST"
                             ) ||
                                 (
-                                    bookmarks.some((bookmarkPost) => bookmarkPost._id === post._id) &&
+                                    bookmarks?.length && bookmarks?.some((bookmarkPost) => bookmarkPost._id === post._id) &&
                                     cardIcon.iconName === "BOOKMARK_POST"
                                 ) ?
                                 {
@@ -47,8 +48,18 @@ const PostCardActions = ({ post }) => {
                         onClick={
                             () => cardIcon.iconName === "LIKE_POST" ?
                                 post.likes.likedBy.some((id) => id._id === loggedInUser._id) ?
-                                    dispatch(dislikePost(post._id)) :
-                                    dispatch(likePost(post._id)) :
+                                    dispatch(dislikePost(
+                                        {
+                                            postId: post._id,
+                                            encodedToken: encodedToken
+                                        }
+                                    )) :
+                                    dispatch(likePost(
+                                        {
+                                            postId: post._id,
+                                            encodedToken: encodedToken
+                                        }
+                                    )) :
                                 cardIcon.iconName === "COMMENT_ON_POST" ?
                                     commentDialogOfCardWithId === post._id ?
                                         (
@@ -64,9 +75,19 @@ const PostCardActions = ({ post }) => {
                                             setShowEmojiPicker(false)
                                         ) :
                                     cardIcon.iconName === "BOOKMARK_POST" ?
-                                        bookmarks.some((bookmarkPost) => bookmarkPost._id === post._id) ?
-                                            dispatch(removeFromUserBookmarks(post._id)) :
-                                            dispatch(addToUserBookmarks(post._id)) : ""
+                                        bookmarks?.length && bookmarks.some((bookmarkPost) => bookmarkPost._id === post._id) ?
+                                            dispatch(removeFromUserBookmarks(
+                                                {
+                                                    postId: post._id,
+                                                    encodedToken: encodedToken
+                                                }
+                                            )) :
+                                            dispatch(addToUserBookmarks(
+                                                {
+                                                    postId: post._id,
+                                                    encodedToken: encodedToken
+                                                }
+                                            )) : ""
                         }>
                         <Typography
                             sx={{
