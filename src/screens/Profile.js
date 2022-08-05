@@ -2,6 +2,7 @@ import { ModalBox, ModalTextField, ModalTextArea, ModalActionBtn, ModalImageInpu
 import { INITIAL_EDIT_STATE } from "../constants/modalConstants";
 import { pageBoxStyling } from "../utils/commonStyles";
 import { Box, ButtonGroup } from '@mui/material';
+import { useParams } from "react-router-dom";
 import { utilComp } from "../components/";
 import { useSelector } from "react-redux";
 import { useModal } from "../contexts/";
@@ -10,13 +11,17 @@ import { useEffect } from "react";
 const ProfilePage = () => {
 
     const { loggedInUser } = useSelector((store) => store.user);
+    const { userId } = useSelector((store) => store.auth);
     const { dispatchOfEditProfile } = useModal();
+    const { profileId } = useParams();
 
     useEffect(() => {
-        dispatchOfEditProfile({
-            type: INITIAL_EDIT_STATE,
-            payload: loggedInUser
-        })
+        if (profileId === userId) {
+            dispatchOfEditProfile({
+                type: INITIAL_EDIT_STATE,
+                payload: loggedInUser
+            })
+        }
         // eslint-disable-next-line
     }, [loggedInUser]);
 
@@ -25,7 +30,7 @@ const ProfilePage = () => {
             <utilComp.Header />
             <Box sx={pageBoxStyling}>
                 <utilComp.SideBar />
-                <utilComp.ProfileSection />
+                <utilComp.ProfileSection profileId={profileId} />
                 <utilComp.FollowRecommendationSection />
                 <ModalBox>
                     <ModalImageInput

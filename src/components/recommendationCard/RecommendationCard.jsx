@@ -2,11 +2,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { followTheUser } from "../../redux/features/user/userSlice";
 import { Card, Avatar, CardHeader, Typography } from '@mui/material';
 import { card } from "../../utils/commonStyles";
+import { useNavigate } from "react-router-dom";
 
 const RecommendationCard = ({ user }) => {
 
-    const { encodedToken } = useSelector((store) => store.auth); 
+    const { encodedToken } = useSelector((store) => store.auth);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     return (
         <Card
@@ -22,7 +24,8 @@ const RecommendationCard = ({ user }) => {
                 minHeight: '3.2rem',
                 mt: { xs: 0, md: 2 },
                 position: 'relative'
-            }}>
+            }}
+            onClick={() => navigate(`/profile/${user._id}`)}>
             <CardHeader
                 sx={{
                     p: 1,
