@@ -2,7 +2,7 @@ import { scrollbar, sectionSpacing } from "../../utils/commonStyles";
 import { ProfileDetails } from "../profilePageComponents/";
 import { Box } from '@mui/material';
 
-const ProfileSection = () => {
+const ProfileSection = ({ profileId }) => {
     return (
         <Box
             sx={{
@@ -11,7 +11,7 @@ const ProfileSection = () => {
                 ...sectionSpacing,
                 position: 'relative'
             }}>
-            <ProfileDetails />
+            <ProfileDetails profileId={profileId} />
         </Box>
     );
 }

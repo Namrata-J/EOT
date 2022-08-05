@@ -1,12 +1,15 @@
-import { useSelector } from "react-redux";
 import { useModal } from "../../contexts/";
+import { useSelector, useDispatch } from "react-redux";
 import { Box, Typography, Link, Button } from '@mui/material';
+import { followTheUser, unfollowTheUser } from "../../redux/features/user/userSlice";
 import { profileInfoLink, profilePageActionBtn, profileInfoTextSize } from "../../utils/commonStyles";
 
-const UserBio = () => {
+const UserBio = ({ foundUserWithProfileId, userIsLoggedInUser }) => {
 
+    const { encodedToken } = useSelector((store) => store.auth);
     const { loggedInUser } = useSelector((store) => store.user);
     const { handleOpenModal } = useModal();
+    const dispatch = useDispatch();
 
     return (
         <Box sx={{
@@ -19,33 +22,74 @@ const UserBio = () => {
                     fontWeight: 'bold',
                     fontSize: { xs: '0.9rem', lg: '1rem' }
                 }}>
-                {loggedInUser.firstName} {loggedInUser.lastName}
+                {userIsLoggedInUser ?
+                    `${loggedInUser.firstName} ${loggedInUser.lastName}` :
+                    `${foundUserWithProfileId.firstName} ${foundUserWithProfileId.lastName}`}
             </Typography>
             <Typography sx={profileInfoTextSize}>
-                @{loggedInUser.userName}
+                {userIsLoggedInUser ?
+                    `@${loggedInUser.userName}` :
+                    `@${foundUserWithProfileId.userName}`}
             </Typography>
             <Typography
                 sx={{
                     pt: { xs: 1.5, md: 2 },
                     ...profileInfoTextSize
                 }}>
-                {loggedInUser.bio}
+                {userIsLoggedInUser ?
+                    loggedInUser.bio :
+                    foundUserWithProfileId.bio}
             </Typography>
             <Link
-                href={loggedInUser.websiteUrl}
+                href={
+                    userIsLoggedInUser ?
+                        loggedInUser.websiteUrl :
+                        foundUserWithProfileId.websiteUrl
+                }
                 target="_blank"
                 sx={{
                     ...profileInfoTextSize,
                     ...profileInfoLink
                 }}>
-                {loggedInUser.websiteUrl}
+                {userIsLoggedInUser ?
+                    loggedInUser.websiteUrl :
+                    foundUserWithProfileId.websiteUrl}
             </Link>
-            <Button
-                onClick={handleOpenModal}
-                variant="outlined"
-                sx={profilePageActionBtn}>
-                Edit Profile
-            </Button>
+            {
+                userIsLoggedInUser ?
+                    <Button
+                        onClick={handleOpenModal}
+                        variant="outlined"
+                        sx={profilePageActionBtn}>
+                        Edit Profile
+                    </Button> :
+                    <Button
+                        variant="outlined"
+                        sx={profilePageActionBtn}
+                        onClick={() => {
+                            loggedInUser.following.some((user) => user.userName === foundUserWithProfileId.userName) ?
+                                dispatch(
+                                    unfollowTheUser(
+                                        {
+                                            followUsername: foundUserWithProfileId.userName,
+                                            encodedToken: encodedToken
+                                        }
+                                    )
+                                ) :
+                                dispatch(
+                                    followTheUser(
+                                        {
+                                            followUsername: foundUserWithProfileId.userName,
+                                            encodedToken: encodedToken
+                                        }
+                                    )
+                                )
+                        }}>
+                        {loggedInUser.following.some((user) => user.userName === foundUserWithProfileId.userName) ?
+                            "Following" :
+                            "Follow"}
+                    </Button>
+            }
         </Box>
     );
 }

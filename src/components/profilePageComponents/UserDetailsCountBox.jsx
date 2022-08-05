@@ -1,8 +1,10 @@
+import { useSelector } from "react-redux";
 import { Box, Typography } from '@mui/material';
 import { profileInfoTextSize, flexBetweenVariant1, verticalFlex } from "../../utils/commonStyles";
 
-const UserDetailsCountBox = ({ loggedInUser, userPosts }) => {
+const UserDetailsCountBox = ({ userPosts, foundUserWithProfileId, userIsLoggedInUser }) => {
 
+    const { loggedInUser } = useSelector((store) => store.user);
     const userDetailsCountList = ["Posts", "Followers", "Following"];
 
     return (
@@ -34,8 +36,12 @@ const UserDetailsCountBox = ({ loggedInUser, userPosts }) => {
                                 index === 0 ?
                                     userPosts?.length :
                                     index === 1 ?
-                                        loggedInUser?.followers?.length :
-                                        loggedInUser?.following?.length
+                                        userIsLoggedInUser ?
+                                            loggedInUser?.followers?.length :
+                                            foundUserWithProfileId?.followers?.length :
+                                        userIsLoggedInUser ?
+                                            loggedInUser?.following?.length :
+                                            foundUserWithProfileId?.following?.length
                             }
                         </Typography>
                     </Box>

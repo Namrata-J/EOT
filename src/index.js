@@ -7,15 +7,7 @@ import { store } from "./redux/app/store";
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
 import { AppThemeProvider } from "./providers/AppThemeProvider";
-import {
-  AuthProvider,
-  SideBarProvider,
-  HeaderProvider,
-  CreatePostProvider,
-  PostCardProvider,
-  FilterProvider,
-  ModalProvider
-} from "./contexts/";
+import { CombinedProvider } from "./providers/CombinedProvider";
 
 // Call make Server
 makeServer();
@@ -28,21 +20,9 @@ root.render(
     <BrowserRouter>
       <Provider store={store}>
         <AppThemeProvider>
-          <AuthProvider>
-            <SideBarProvider>
-              <HeaderProvider>
-                <CreatePostProvider>
-                  <PostCardProvider>
-                    <FilterProvider>
-                      <ModalProvider>
-                        <App />
-                      </ModalProvider>
-                    </FilterProvider>
-                  </PostCardProvider>
-                </CreatePostProvider>
-              </HeaderProvider>
-            </SideBarProvider>
-          </AuthProvider>
+          <CombinedProvider>
+            <App />
+          </CombinedProvider>
         </AppThemeProvider>
       </Provider>
     </BrowserRouter>
