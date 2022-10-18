@@ -13,7 +13,7 @@ const HeaderIconBtn = ({ children }) => {
                 display: { xs: 'inline-block', sm: 'none' },
                 height: '100%',
                 "&:hover": {
-                    color: 'otherColors.contradictory'
+                    color: 'otherColors.lightPurple'
                 }
             }}
             onClick={handleHamburgerDisplay}>

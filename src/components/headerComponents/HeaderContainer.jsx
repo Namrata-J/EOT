@@ -6,11 +6,11 @@ const HeaderContainer = ({ children }) => {
         <Box sx={{
             ...verticalFlexCenter,
             zIndex: '3',
-            boxShadow: 3,
+            boxShadow: 2,
             width: '100%',
             position: 'relative',
             pl: { xs: 0.5, sm: 2 },
-            height: { xs: '8vh', sm: '10vh', md: '12vh' }
+            height: { xs: '8vh', sm: '10vh' }
         }}>
             {children}
         </Box>
