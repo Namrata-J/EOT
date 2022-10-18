@@ -50,7 +50,7 @@ export const headingVariantForLandingPage = {
     display: 'inline-block',
     fontWeight: 'bold',
     color: 'otherColors.white',
-    fontSize: { xs: 'x-small', sm: 'small', md: 'medium', lg: 'large' },
+    fontSize: { xs: 'large' },
     marginBottom: '0.5rem'
 }
 

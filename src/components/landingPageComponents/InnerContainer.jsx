@@ -6,9 +6,10 @@ const InnerContainer = ({ children }) => {
         <Box sx={{
             ...containerType1,
             ...darkOpacity,
-            flexDirection: { xs: 'column', sm: 'row' },
             borderRadius: 6,
-            p: { xs: 0, sm: 2 },
+            flexWrap: 'wrap',
+            p: { xs: 1, sm: 2 },
+            gap: '2rem',
             ...flexBetweenVariant1
         }}>
             {children}
