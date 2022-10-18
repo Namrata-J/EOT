@@ -9,7 +9,7 @@ const SideBarContainer = ({ children }) => {
     return (
         <Box
             sx={{
-                backgroundColor: 'primary.main',
+                backgroundColor: 'otherColors.mediumPurple',
                 borderRadius: { sm: 2, md: 4, lg: 5 },
                 width: { xs: '15rem', sm: '20rem', md: '15rem' },
                 ...flexBetweenVariant2,

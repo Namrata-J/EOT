@@ -27,7 +27,7 @@ const FollowRecommendationSection = () => {
                 size="small"
                 sx={{
                     width: '100%',
-                    backgroundColor: 'primary.main',
+                    backgroundColor: 'otherColors.mediumPurple',
                     borderTopLeftRadius: 18,
                     borderTopRightRadius: 18,
                     input: {

@@ -130,7 +130,7 @@ export const boxText = {
 export const card = {
     borderRadius: { xs: 5, sm: 2, md: 5 },
     border: 'none',
-    backgroundColor: 'primary.main',
+    backgroundColor: 'otherColors.mediumPurple',
     color: 'otherColors.lightGray',
     minHeight: '10rem',
     overflow: 'visible'
@@ -200,10 +200,10 @@ export const sectionSpacing = {
 }
 
 export const emojiPicker = {
-    background: '#2d2640',
+    background: '#271e36',
     borderRadius: '1.3rem',
     border: 'none',
-    boxShadow: '0px 1px 5px black',
+    boxShadow: '0px 0px 2px 0px black',
     display: 'flex',
     height: '17.2rem',
     width: '100%',
