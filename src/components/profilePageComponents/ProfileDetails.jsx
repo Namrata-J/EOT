@@ -10,6 +10,7 @@ const ProfileDetails = ({ profileId }) => {
     const [userIsLoggedInUser, setUserIsLoggedInUser] = useState(false);
     const { loggedInUser, users } = useSelector((store) => store.user);
     const { userPosts, posts } = useSelector((store) => store.post);
+    const { comments } = useSelector((store) => store.comment);
     const { userId } = useSelector((store) => store.auth);
     const dispatch = useDispatch();
 
@@ -31,7 +32,7 @@ const ProfileDetails = ({ profileId }) => {
         }
         setUserIsLoggedInUser(userId === profileId)
         // eslint-disable-next-line
-    }, [profileId, loggedInUser, dispatch, posts]);
+    }, [profileId, loggedInUser, dispatch, posts, comments]);
 
     return (
         <Box sx={{ width: '100%' }}>
