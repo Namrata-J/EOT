@@ -15,8 +15,8 @@ const theme = createTheme({
             lightPurple: '#8041b0',
             mediumPurple: '#2d2640',
             transparentPurple: '#1a162a6b',
-            lightestGray: '#d5d3db',
-            lightGray: '#9c9aa8',
+            lightestGray: '#f3f2f5',
+            lightGray: '#edebeb',
             gray: '#56505a',
             white: '#ffffff',
             contradictory: '#9c5f64'
