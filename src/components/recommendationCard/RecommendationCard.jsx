@@ -11,8 +11,6 @@ const RecommendationCard = ({ user }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    console.log(user)
-
     return (
         <Card
             variant="outlined"
