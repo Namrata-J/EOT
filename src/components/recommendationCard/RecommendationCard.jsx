@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { followTheUser } from "../../redux/features/user/userSlice";
+import { followTheUser, unfollowTheUser } from "../../redux/features/user/userSlice";
 import { Card, Avatar, CardHeader, Typography } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
 import { card } from "../../utils/commonStyles";
 import { useNavigate } from "react-router-dom";
 
@@ -67,17 +67,30 @@ const RecommendationCard = ({ user }) => {
                             bottom: '0rem'
                         }}
                         onClick={
-                            (e) => {
-                                dispatch(
-                                    followTheUser(
-                                        {
-                                            followUsername: user.userName,
-                                            encodedToken: encodedToken
-                                        }
+                            (e) =>
+                                user.followers.some((follower) => follower._id === loggedInUser._id) ?
+                                    (
+                                        dispatch(
+                                            unfollowTheUser(
+                                                {
+                                                    followUsername: user.userName,
+                                                    encodedToken: encodedToken
+                                                }
+                                            )
+                                        ),
+                                        e.stopPropagation()
+                                    ) :
+                                    (
+                                        dispatch(
+                                            followTheUser(
+                                                {
+                                                    followUsername: user.userName,
+                                                    encodedToken: encodedToken
+                                                }
+                                            )
+                                        ),
+                                        e.stopPropagation()
                                     )
-                                );
-                                e.stopPropagation();
-                            }
                         }
                     >
                         {
