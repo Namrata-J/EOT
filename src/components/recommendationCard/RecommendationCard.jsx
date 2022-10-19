@@ -7,8 +7,11 @@ import { useNavigate } from "react-router-dom";
 const RecommendationCard = ({ user }) => {
 
     const { encodedToken } = useSelector((store) => store.auth);
+    const { loggedInUser } = useSelector((store) => store.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    console.log(user)
 
     return (
         <Card
@@ -66,17 +69,23 @@ const RecommendationCard = ({ user }) => {
                             bottom: '0rem'
                         }}
                         onClick={
-                            () => dispatch(
-                                followTheUser(
-                                    {
-                                        followUsername: user.userName,
-                                        encodedToken: encodedToken
-                                    }
-                                )
-                            )
+                            (e) => {
+                                dispatch(
+                                    followTheUser(
+                                        {
+                                            followUsername: user.userName,
+                                            encodedToken: encodedToken
+                                        }
+                                    )
+                                );
+                                e.stopPropagation();
+                            }
                         }
                     >
-                        Follow
+                        {
+                            user.followers.some((follower) => follower._id === loggedInUser._id) ?
+                                "Unfollow" : "Follow"
+                        }
                     </Typography>
                 }
                 title={user.firstName + " " + user.lastName}
