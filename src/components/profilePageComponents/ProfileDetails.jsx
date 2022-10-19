@@ -22,13 +22,13 @@ const ProfileDetails = ({ profileId }) => {
                 }));
         } else {
             const foundedUser = users.find((user) => user._id === profileId);
-            setFoundUserWithProfileId(foundedUser);
             if (foundedUser) {
                 dispatch(getAllPostsOfAUser(
                     {
                         username: foundedUser?.userName
                     }));
             }
+            setFoundUserWithProfileId(foundedUser);
         }
         setUserIsLoggedInUser(userId === profileId)
         // eslint-disable-next-line
