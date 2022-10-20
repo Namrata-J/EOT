@@ -1,11 +1,11 @@
 {
   "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "Social Media App",
   "icons": [
     {
-      "src": "",
+      "src": "/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": ""
+      "type": "text/image"
     }
   ],
   "start_url": ".",
