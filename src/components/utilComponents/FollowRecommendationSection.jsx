@@ -64,8 +64,8 @@ const FollowRecommendationSection = () => {
                 }}
             />
             {
-                searchedUsers.length > 0 && <List sx={
-                    {
+                searchedUsers.length > 0 && <List
+                    sx={{
                         bgcolor: '#271e36',
                         boxShadow: '0px 0px 2px 0px black',
                         borderTop: '1px solid #edebeb',
@@ -74,15 +74,17 @@ const FollowRecommendationSection = () => {
                         position: 'absolute',
                         width: { md: '14rem', lg: '18rem' },
                         zIndex: '2'
-                    }
-                }>
+                    }} >
                     {
                         searchedUsers.map(
                             (user, index) => <ListItem
                                 key={index}
                                 onClick={() => navigate(`/profile/${user._id}`)}
                                 sx={{
-                                    cursor: 'pointer'
+                                    cursor: 'pointer',
+                                    '&:hover': {
+                                        bgcolor: 'otherColors.mediumPurple'
+                                    }
                                 }}>
                                 <ListItemAvatar>
                                     <Avatar alt="user" src={user.profilePic} />
@@ -104,7 +106,7 @@ const FollowRecommendationSection = () => {
                 </List>
             }
             <RecommendationCardListing />
-        </Box>
+        </Box >
     );
 }
 

@@ -17,6 +17,7 @@ const RecommendationCard = ({ user }) => {
             sx={{
                 ...card,
                 display: { xs: 'flex', md: 'block' },
+                cursor: 'pointer',
                 justifyContent: 'center',
                 alignItems: 'center',
                 flexShrink: { xs: 0, md: 1 },
@@ -42,6 +43,10 @@ const RecommendationCard = ({ user }) => {
                         color: 'otherColors.lightGray',
                         fontSize: { xs: '0.7rem', sm: '0.8rem' },
                         textAlign: { xs: 'center', md: 'left' },
+                    },
+                    '&:hover': {
+                        backgroundColor: { xs: 'otherColors.mediumPurple', md: '#271e36' },
+                        borderRadius: 2
                     }
                 }}
                 avatar={
