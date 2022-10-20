@@ -16,7 +16,7 @@ const theme = createTheme({
             mediumPurple: '#2d2640',
             transparentPurple: '#1a162a6b',
             lightestGray: '#f3f2f5',
-            lightGray: '#edebeb',
+            lightGray: '#cac5db',
             gray: '#56505a',
             white: '#ffffff',
             contradictory: '#9c5f64'
@@ -31,7 +31,7 @@ const theme = createTheme({
 });
 
 const AppThemeProvider = ({ children }) => {
-    return <ThemeProvider theme={ theme }>
+    return <ThemeProvider theme={theme}>
         {children}
     </ThemeProvider>
 }
