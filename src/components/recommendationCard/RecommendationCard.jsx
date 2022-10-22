@@ -1,12 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { followTheUser } from "../../redux/features/user/userSlice";
+import { followTheUser, unfollowTheUser } from "../../redux/features/user/userSlice";
 import { Card, Avatar, CardHeader, Typography } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
 import { card } from "../../utils/commonStyles";
 import { useNavigate } from "react-router-dom";
 
 const RecommendationCard = ({ user }) => {
 
     const { encodedToken } = useSelector((store) => store.auth);
+    const { loggedInUser } = useSelector((store) => store.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -15,7 +16,9 @@ const RecommendationCard = ({ user }) => {
             variant="outlined"
             sx={{
                 ...card,
+                boxShadow: { xs: 'none', md: '#091e4240 0px 1px 1px, #091e4221 0px 0px 1px 1px'},
                 display: { xs: 'flex', md: 'block' },
+                cursor: 'pointer',
                 justifyContent: 'center',
                 alignItems: 'center',
                 flexShrink: { xs: 0, md: 1 },
@@ -31,16 +34,25 @@ const RecommendationCard = ({ user }) => {
                     p: 1,
                     pb: { xs: 4, md: 1 },
                     flexDirection: { xs: 'column', md: 'row' },
+                    borderRadius: 2,
                     '& .MuiCardHeader-title': {
-                        color: 'otherColors.lightestGray',
+                        color: 'secondary.main',
                         fontSize: '0.8rem',
+                        fontFamily: 'Gruppo',
+                        fontWeight: 'bold',
                         textAlign: { xs: 'center', md: 'left' },
                         pt: { xs: 1, md: 0 }
                     },
                     '& .MuiCardHeader-subheader': {
-                        color: 'otherColors.lightGray',
+                        color: 'otherColors.gray',
+                        fontFamily: 'Gruppo',
+                        fontWeight: 'bold',
                         fontSize: { xs: '0.7rem', sm: '0.8rem' },
                         textAlign: { xs: 'center', md: 'left' },
+                    },
+                    '&:hover': {
+                        backgroundColor: { xs: 'primary.main', md: 'primary.light' },
+                        borderRadius: 2
                     }
                 }}
                 avatar={
@@ -57,8 +69,10 @@ const RecommendationCard = ({ user }) => {
                     <Typography
                         sx={{
                             cursor: 'pointer',
-                            color: 'otherColors.lightGreen',
+                            color: 'otherColors.green',
                             fontSize: { md: '0.8rem', lg: '0.9rem' },
+                            fontFamily: 'Gruppo',
+                            fontWeight: 'bold',
                             p: 1,
                             pt: { md: 0 },
                             position: { xs: 'absolute', md: 'static' },
@@ -66,17 +80,36 @@ const RecommendationCard = ({ user }) => {
                             bottom: '0rem'
                         }}
                         onClick={
-                            () => dispatch(
-                                followTheUser(
-                                    {
-                                        followUsername: user.userName,
-                                        encodedToken: encodedToken
-                                    }
-                                )
-                            )
+                            (e) =>
+                                user.followers.some((follower) => follower._id === loggedInUser._id) ?
+                                    (
+                                        dispatch(
+                                            unfollowTheUser(
+                                                {
+                                                    followUsername: user.userName,
+                                                    encodedToken: encodedToken
+                                                }
+                                            )
+                                        ),
+                                        e.stopPropagation()
+                                    ) :
+                                    (
+                                        dispatch(
+                                            followTheUser(
+                                                {
+                                                    followUsername: user.userName,
+                                                    encodedToken: encodedToken
+                                                }
+                                            )
+                                        ),
+                                        e.stopPropagation()
+                                    )
                         }
                     >
-                        Follow
+                        {
+                            user.followers.some((follower) => follower._id === loggedInUser._id) ?
+                                "Unfollow" : "Follow"
+                        }
                     </Typography>
                 }
                 title={user.firstName + " " + user.lastName}

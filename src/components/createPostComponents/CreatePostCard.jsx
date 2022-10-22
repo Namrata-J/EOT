@@ -6,7 +6,9 @@ const CreatePostCard = ({ btnType, post, comment }) => {
     return (
         <Card
             variant="outlined"
-            sx={card}>
+            sx={{
+                ...card,
+            }}>
             <createPost.CreatePostCardHeader />
             <createPost.CreatePostCardContent
                 btnType={

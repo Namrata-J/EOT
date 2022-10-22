@@ -4,7 +4,7 @@ import { authCardHeading } from "../../utils/commonStyles";
 const AuthCardHeading = ({ cardHeading }) => {
     return (
         <Typography
-            variant='body1'
+            variant='h6'
             sx={authCardHeading}>
             {cardHeading}
         </Typography>

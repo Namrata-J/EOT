@@ -14,12 +14,24 @@ const LogOutPage = () => {
         <authPageComp.AuthPageOuterContainer>
             <authPageComp.AuthCard sx={logOutBtnContainer}>
                 <authPageComp.AuthCardHeading cardHeading="LogOut" />
-                <Typography sx={{ textAlign: 'center' }}>
+                <Typography
+                    sx={{
+                        color: 'otherColors.gray',
+                        fontFamily: 'Gruppo',
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                    }}>
                     Are you sure you wanna quit!?
                 </Typography>
                 <Button
                     variant="contained"
-                    sx={containedBtn}
+                    sx={{
+                        ...containedBtn,
+                        backgroundColor: 'otherColors.contradictory',
+                        '&:hover': {
+                            backgroundColor: 'otherColors.contradictoryLightShade'
+                        }
+                    }}
                     onClick={() => { dispatch(logoutHandler()); navigate("/") }}>LogOut
                 </Button>
                 <Button

@@ -22,9 +22,10 @@ const ModalTextArea = ({ defaultValue }) => {
             style={{
                 ...input,
                 ...textArea,
-                backgroundColor: '#1c182aa1',
+                border: '1px solid #f5f5f5',
+                backgroundColor: 'transparent',
                 fontSize: '1rem',
-                color: '#d5d3db',
+                color: '#616161',
                 padding: '0.8rem',
                 width: '100%',
                 margin: '0.5rem 0rem',

@@ -9,7 +9,9 @@ const PostCardContent = ({ post, comment }) => {
             <Typography
                 sx={{
                     fontSize: { xs: '0.9rem', md: '1rem' },
-                    color: 'otherColors.lightestGray'
+                    fontFamily: 'Gruppo',
+                    fontWeight: 'bold',
+                    color: 'otherColors.gray',
                 }}>
                 {post ? post.content : comment.content}
             </Typography>

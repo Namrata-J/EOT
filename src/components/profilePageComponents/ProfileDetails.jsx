@@ -9,7 +9,8 @@ const ProfileDetails = ({ profileId }) => {
     const [foundUserWithProfileId, setFoundUserWithProfileId] = useState({});
     const [userIsLoggedInUser, setUserIsLoggedInUser] = useState(false);
     const { loggedInUser, users } = useSelector((store) => store.user);
-    const { userPosts } = useSelector((store) => store.post);
+    const { userPosts, posts } = useSelector((store) => store.post);
+    const { comments } = useSelector((store) => store.comment);
     const { userId } = useSelector((store) => store.auth);
     const dispatch = useDispatch();
 
@@ -21,17 +22,17 @@ const ProfileDetails = ({ profileId }) => {
                 }));
         } else {
             const foundedUser = users.find((user) => user._id === profileId);
-            setFoundUserWithProfileId(foundedUser);
             if (foundedUser) {
                 dispatch(getAllPostsOfAUser(
                     {
                         username: foundedUser?.userName
                     }));
             }
+            setFoundUserWithProfileId(foundedUser);
         }
         setUserIsLoggedInUser(userId === profileId)
         // eslint-disable-next-line
-    }, [profileId, loggedInUser, dispatch]);
+    }, [profileId, loggedInUser, dispatch, posts, comments]);
 
     return (
         <Box sx={{ width: '100%' }}>

@@ -20,7 +20,7 @@ const SideBarList = () => {
                 sx={{
                     '& .MuiListItemButton-root:hover': {
                         '& .MuiListItemIcon-root': {
-                            color: 'otherColors.lightPurple',
+                            color: 'secondary.main',
                         },
                     }
                 }}>
@@ -45,8 +45,10 @@ const SideBarList = () => {
                                             <Typography
                                                 type="body1"
                                                 sx={{
-                                                    color: 'otherColors.lightGray',
-                                                    fontSize: { sm: '0.9rem', md: '1rem' }
+                                                    color: 'otherColors.gray',
+                                                    fontSize: { sm: '0.9rem', md: '1rem' },
+                                                    fontFamily: 'Gruppo',
+                                                    fontWeight: 'bold'
                                                 }}>
                                                 {path.pathName}
                                             </Typography>}

@@ -81,8 +81,8 @@ const ModalImageInput = ({ coverPic, profilePic }) => {
                             editProfileState.profilePic
                     }
                     sx={{
-                        backgroundColor: 'otherColors.transparentPurple',
-                        border: '2px solid #2f293b',
+                        backgroundColor: 'primary.light',
+                        border: '1px solid #6261bd',
                         width: 80,
                         height: 80,
                         m: '0.5rem 0rem'

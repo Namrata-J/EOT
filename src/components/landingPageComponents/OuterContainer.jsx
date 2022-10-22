@@ -6,7 +6,7 @@ const OuterContainer = ({ children }) => {
         <Box sx={{
             ...flexCenter,
             ...fullScreen,
-            bgcolor: 'primary.dark'
+            bgcolor: 'primary.light'
         }}>
             {children}
         </Box>

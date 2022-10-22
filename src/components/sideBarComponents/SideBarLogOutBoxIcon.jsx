@@ -12,7 +12,7 @@ const SideBarLogOutBoxIcon = () => {
                 position: "absolute",
                 right: "0.5rem",
                 '&:hover': {
-                    color: 'otherColors.lightPurple',
+                    color: 'secondary.main',
                     cursor: 'pointer'
                 }
             }}

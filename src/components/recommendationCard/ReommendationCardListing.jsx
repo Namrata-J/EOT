@@ -17,8 +17,7 @@ const RecommendationCardListing = () => {
             }}>
             {
                 users?.filter(
-                    (user) => user.userName !== loggedInUser.userName &&
-                        user.followers.length === 0
+                    (user) => user.userName !== loggedInUser.userName
                 ).map((user, index) =>
                     <RecommendationCard key={index} user={user} />
                 )

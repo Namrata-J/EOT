@@ -1,15 +1,14 @@
 import { Box, Link } from '@mui/material';
-import logo from '../../assets/Logo.png';
+import eot from '../../assets/EOT.png';
 
 const HeaderLogo = () => {
     return (
         <Link href="/home">
             <Box
                 component='img'
-                src={logo}
+                src={eot}
                 sx={{
-                    width: { xs: 60, sm: 80, md: 90 },
-                    m: 1
+                    width: { xs: 60, sm: 70 }
                 }} />
         </Link>
     );

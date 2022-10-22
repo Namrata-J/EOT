@@ -40,8 +40,10 @@ const UserPosts = ({ userPosts, profileId }) => {
             }}>
             <Typography
                 sx={{
+                    color: 'secondary.main',
                     fontSize: { xs: '0.9rem', md: '1rem' },
                     fontWeight: 'bold',
+                    fontFamily: 'Gruppo',
                     p: 1.5,
                     pb: 0
                 }}>

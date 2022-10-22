@@ -12,7 +12,7 @@ const LandingPage = () => {
                     component="img"
                     src={logo}
                     sx={{
-                        width: { xs: 200, md: 250 },
+                        width: { xs: 250, md: 300 },
                     }} />
                 <div sx={flexCenter}>
                     {
@@ -21,7 +21,10 @@ const LandingPage = () => {
                                 key={index}
                                 variant="body1"
                                 sx={{
-                                    fontSize: { xs: 'small' }
+                                    color: 'otherColors.gray',
+                                    fontSize: { xs: 'small' },
+                                    fontWeight: 'bold',
+                                    fontFamily: 'Gruppo'
                                 }}>
                                 <Box
                                     sx={headingVariantForLandingPage}>
