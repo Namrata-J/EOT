@@ -16,6 +16,7 @@ const RecommendationCard = ({ user }) => {
             variant="outlined"
             sx={{
                 ...card,
+                boxShadow: { xs: 'none', md: '#091e4240 0px 1px 1px, #091e4221 0px 0px 1px 1px'},
                 display: { xs: 'flex', md: 'block' },
                 cursor: 'pointer',
                 justifyContent: 'center',
@@ -33,7 +34,6 @@ const RecommendationCard = ({ user }) => {
                     p: 1,
                     pb: { xs: 4, md: 1 },
                     flexDirection: { xs: 'column', md: 'row' },
-                    boxShadow: '#091e4240 0px 1px 1px, #091e4221 0px 0px 1px 1px',
                     borderRadius: 2,
                     '& .MuiCardHeader-title': {
                         color: 'secondary.main',
@@ -51,7 +51,7 @@ const RecommendationCard = ({ user }) => {
                         textAlign: { xs: 'center', md: 'left' },
                     },
                     '&:hover': {
-                        backgroundColor: 'primary.light',
+                        backgroundColor: { xs: 'primary.main', md: 'primary.light' },
                         borderRadius: 2
                     }
                 }}

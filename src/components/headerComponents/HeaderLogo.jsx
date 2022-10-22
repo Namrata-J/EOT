@@ -8,8 +8,7 @@ const HeaderLogo = () => {
                 component='img'
                 src={eot}
                 sx={{
-                    width: { xs: 50, md: 70 },
-                    m: 1
+                    width: { xs: 60, sm: 70 }
                 }} />
         </Link>
     );

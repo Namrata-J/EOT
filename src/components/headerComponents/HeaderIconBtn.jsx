@@ -12,7 +12,7 @@ const HeaderIconBtn = ({ children }) => {
             sx={{
                 ...headerIcon,
                 display: { xs: 'inline-block', sm: 'none' },
-                height: '100%',
+                height: '100%'
             }}
             onClick={handleHamburgerDisplay}>
             {children}

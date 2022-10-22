@@ -12,7 +12,7 @@ const Header = () => {
 
     return (
         <headerComp.HeaderContainer>
-            <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <headerComp.HeaderIconBtn>
                     <MenuIcon fontSize='inherit' />
                 </headerComp.HeaderIconBtn>
