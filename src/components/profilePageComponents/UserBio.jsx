@@ -19,14 +19,22 @@ const UserBio = ({ foundUserWithProfileId, userIsLoggedInUser }) => {
         }}>
             <Typography
                 sx={{
+                    color: 'secondary.main',
                     fontWeight: 'bold',
-                    fontSize: { xs: '0.9rem', lg: '1rem' }
+                    fontSize: { xs: '0.9rem', lg: '1rem' },
+                    fontFamily: 'Gruppo',
                 }}>
                 {userIsLoggedInUser ?
                     `${loggedInUser.firstName} ${loggedInUser.lastName}` :
                     `${foundUserWithProfileId.firstName} ${foundUserWithProfileId.lastName}`}
             </Typography>
-            <Typography sx={profileInfoTextSize}>
+            <Typography
+                sx={{
+                    ...profileInfoTextSize,
+                    color: 'otherColors.gray',
+                    fontFamily: 'Gruppo',
+                    fontWeight: 'bold',
+                }}>
                 {userIsLoggedInUser ?
                     `@${loggedInUser.userName}` :
                     `@${foundUserWithProfileId.userName}`}
@@ -34,7 +42,10 @@ const UserBio = ({ foundUserWithProfileId, userIsLoggedInUser }) => {
             <Typography
                 sx={{
                     pt: { xs: 1.5, md: 2 },
-                    ...profileInfoTextSize
+                    ...profileInfoTextSize,
+                    color: 'otherColors.gray',
+                    fontFamily: 'Gruppo',
+                    fontWeight: 'bold',
                 }}>
                 {userIsLoggedInUser ?
                     loggedInUser.bio :

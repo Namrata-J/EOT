@@ -20,20 +20,18 @@ const SideBarLogOutBoxText = () => {
                 {loggedInUser.firstName} {loggedInUser.lastName}
                 <DoneTwoToneIcon
                     sx={{
-                        fontSize: {
-                            xs: "x-small",
-                            lg: "small"
-                        },
-                        color: "otherColors.lightGreen"
+                        fontSize: '0.9rem',
+                        color: "otherColors.green",
                     }} />
             </Typography>
             <Typography
                 sx={{
+                    fontFamily: 'Gruppo',
                     fontSize: {
                         xs: "x-small",
                         lg: "small"
                     },
-                    lineHeight: 0.8
+                    fontWeight: 'bold'
                 }}>
                 @{loggedInUser.userName}
             </Typography>

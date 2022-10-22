@@ -5,7 +5,8 @@ const CardLink = ({ image }) => {
         <Link
             href={image}
             fontFamily="Gruppo"
-            color='otherColors.lightestGray'>
+            color='otherColors.gray'
+            fontWeight="bold">
             {image}
         </Link>
     );

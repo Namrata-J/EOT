@@ -4,7 +4,7 @@ import { fullScreen } from "../../utils/commonStyles";
 const PageContainer = ({ children }) => {
     return (
         <Box sx={{
-            backgroundColor: 'primary.dark',
+            backgroundColor: 'primary.light',
             ...fullScreen
         }}>
             {children}

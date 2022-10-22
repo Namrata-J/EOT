@@ -1,6 +1,6 @@
 import { verticalFlexCenter } from "../../utils/commonStyles";
 import LogoutIcon from '@mui/icons-material/Logout';
-import { boxColor } from "../../utils/commonStyles";
+import { boxColor, boxText } from "../../utils/commonStyles";
 import { Box, Typography, Link } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useSideBar } from "../../contexts/";
@@ -14,6 +14,7 @@ const SideBarLogOutBoxIconPopup = () => {
         <Box
             sx={{
                 ...boxColor,
+                ...boxText,
                 borderRadius: 2,
                 position: "absolute",
                 display: sideBarLogoutPopupDisplay,
@@ -24,7 +25,8 @@ const SideBarLogOutBoxIconPopup = () => {
             <Typography
                 sx={{
                     lineHeight: { xs: "1.5rem", md: "2rem" },
-                    fontSize: { xs: "0.8rem", md: "1rem" }
+                    fontSize: { xs: "0.8rem", md: "1rem" },
+                    ...boxText
                 }}>
                 @{loggedInUser.userName}
             </Typography>
@@ -32,13 +34,14 @@ const SideBarLogOutBoxIconPopup = () => {
                 <Typography
                     sx={{
                         ...verticalFlexCenter,
+                        ...boxText,
+                        color: 'otherColors.contradictory',
                         cursor: "pointer",
                         fontSize: "small",
                         textAlign: "left",
-                        fontWeight: "bold",
                         gap: 1,
                         '&:hover': {
-                            color: 'otherColors.contradictory'
+                            color: 'otherColors.contradictoryLightShade'
                         }
                     }}>
                     LogOut

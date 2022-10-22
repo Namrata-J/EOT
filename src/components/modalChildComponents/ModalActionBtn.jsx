@@ -25,24 +25,7 @@ const ModalActionBtn = ({ btnText }) => {
                     ) :
                     handleCloseModal()
             }
-            sx={
-                btnText === "SAVE" ?
-                    {
-                        ...ModalActionBtnStyle,
-                        '&:hover': {
-                            backgroundColor: 'primary.light'
-                        }
-                    } :
-                    btnText === "CANCEL" ?
-                        {
-                            ...ModalActionBtnStyle,
-                            '&:hover': {
-                                fontSize: 'bold',
-                                color: 'otherColors.contradictory'
-                            }
-                        } :
-                        ModalActionBtnStyle
-            }
+            sx={ModalActionBtnStyle}
         >
             {btnText}
         </Button>

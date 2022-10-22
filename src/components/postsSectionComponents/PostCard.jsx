@@ -14,6 +14,7 @@ const PostCard = (post) => {
             variant="outlined"
             sx={{
                 ...card,
+                boxShadow: '#091e4240 0px 1px 1px, #091e4221 0px 0px 1px 1px',
                 minHeight: '5rem',
                 position: 'relative'
             }}>

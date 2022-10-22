@@ -12,9 +12,10 @@ const UserDetailsCountBox = ({ userPosts, foundUserWithProfileId, userIsLoggedIn
             sx={{
                 p: 1,
                 m: 4,
+                backgroundColor: 'primary.main',
+                boxShadow: '#091e4240 0px 1px 1px, #091e4221 0px 0px 1px 1px',
                 borderRadius: 1,
                 ...flexBetweenVariant1,
-                border: '1px solid #393148'
             }}>
             {
                 userDetailsCountList.map((item, index) =>
@@ -24,13 +25,18 @@ const UserDetailsCountBox = ({ userPosts, foundUserWithProfileId, userIsLoggedIn
                         <Typography
                             sx={{
                                 ...profileInfoTextSize,
-                                fontWeight: 'bold'
+                                color: 'secondary.main',
+                                fontWeight: 'bold',
+                                fontFamily: 'Gruppo',
                             }}>
                             {item}
                         </Typography>
                         <Typography
                             sx={{
-                                textAlign: 'center'
+                                color: 'otherColors.contradictory',
+                                fontWeight: 'bold',
+                                textAlign: 'center',
+                                fontFamily: 'Gruppo',
                             }} >
                             {
                                 index === 0 ?

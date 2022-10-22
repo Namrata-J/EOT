@@ -1,4 +1,5 @@
 import { IconButton } from '@mui/material';
+import { headerIcon } from "../../utils/commonStyles";
 import { useHeader } from "../../contexts/header-context";
 
 const HeaderIconBtn = ({ children }) => {
@@ -7,14 +8,11 @@ const HeaderIconBtn = ({ children }) => {
 
     return (
         <IconButton
-            color="primary"
             size="medium"
             sx={{
+                ...headerIcon,
                 display: { xs: 'inline-block', sm: 'none' },
                 height: '100%',
-                "&:hover": {
-                    color: 'otherColors.lightPurple'
-                }
             }}
             onClick={handleHamburgerDisplay}>
             {children}

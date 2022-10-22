@@ -40,7 +40,7 @@ const PostCardActions = ({ post }) => {
                                 ) ?
                                 {
                                     ...cardActionIcon,
-                                    color: 'otherColors.lightPurple'
+                                    color: 'otherColors.contradictoryLightShade'
                                 } :
                                 { ...cardActionIcon }
                         }

@@ -39,7 +39,8 @@ const PostCardHeader = ({ post, comment }) => {
                     }>
                     <Box
                         sx={{
-                            backgroundColor: 'primary.dark',
+                            backgroundColor: 'primary.light',
+                            boxShadow: '#091e4240 0px 1px 1px, #091e4221 0px 0px 1px 1px',
                             borderRadius: 1,
                             display: stateOfPostCard.includes(post._id) ? 'block' : 'none',
                             position: 'absolute',
@@ -52,7 +53,10 @@ const PostCardHeader = ({ post, comment }) => {
                                 <Typography
                                     key={index}
                                     sx={{
-                                        fontSize: { xs: '0.8rem', md: '0.9rem' }
+                                        fontFamily: 'Gruppo',
+                                        fontWeight: 'bold',
+                                        fontSize: { xs: '0.8rem', md: '0.9rem' },
+                                        color: 'otherColors.gray'
                                     }}
                                     onClick={() =>
                                         option.optionStr === "FOLLOW_USER" ?

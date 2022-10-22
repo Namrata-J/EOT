@@ -1,6 +1,7 @@
 import { CardLink } from "../CardLink";
 import { useCreatePostContext } from "../../contexts/";
 import { CardContent, TextareaAutosize } from '@mui/material';
+import { useAppTheme } from "../../providers/AppThemeProvider";
 import { input, textArea, cardContent } from "../../utils/commonStyles";
 import { CREATE_POST_TEXT, COMMENT_TEXT } from "../../constants/createPostConstants";
 
@@ -11,17 +12,27 @@ const CreatePostCardContent = ({ btnType }) => {
         createPostState,
         dispatchOfCommentState,
         dispatchOfCreatePostState } = useCreatePostContext();
+    const { mode } = useAppTheme();
 
     return (
         <CardContent sx={cardContent}>
             <TextareaAutosize
                 placeholder="Type..."
                 minRows={3}
-                style={{
-                    ...input,
-                    ...textArea,
-                    fontSize: '0.9rem'
-                }}
+                style={
+                    mode === 'light' ? {
+                        ...input,
+                        ...textArea,
+                        fontSize: '1rem'
+                    } :
+                        {
+                            ...input,
+                            ...textArea,
+                            color: '#ffffff',
+                            fontWeight: 'light',
+                            fontSize: '1rem'
+                        }
+                }
                 value={btnType === "POST" ? createPostState.content : commentState.content}
                 onChange={
                     (e) =>

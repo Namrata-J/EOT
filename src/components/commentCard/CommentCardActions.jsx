@@ -29,7 +29,7 @@ const CommentCardActions = ({ post, comment }) => {
                             actionIcon.iconName === "UPVOTE_COMMENT" &&
                                 comment.votes.upvotedBy.some((user) => user._id === loggedInUser._id) ?
                                 {
-                                    color: 'otherColors.lightPurple',
+                                    color: 'otherColors.contradictoryLightShade',
                                     ...commentCardActionIcon
                                 } :
                                 commentCardActionIcon

@@ -14,7 +14,7 @@ const ModalBox = ({ children }) => {
             <Box
                 sx={{
                     ...scrollbar,
-                    backgroundColor: 'primary.dark',
+                    backgroundColor: 'primary.main',
                     borderRadius: 1,
                     outline: 'none',
                     m: 1,

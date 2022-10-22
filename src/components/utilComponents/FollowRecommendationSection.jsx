@@ -55,19 +55,22 @@ const FollowRecommendationSection = () => {
                 onChange={(e) => handleSearchEffectively(e)}
                 sx={{
                     width: '100%',
-                    backgroundColor: 'otherColors.mediumPurple',
-                    borderTopLeftRadius: 18,
-                    borderTopRightRadius: 18,
                     input: {
-                        color: 'otherColors.lightestGray',
+                        backgroundColor: 'primary.main',
+                        boxShadow: '#091e4240 0px 1px 1px, #091e4221 0px 0px 1px 1px',
+                        borderTopLeftRadius: 2,
+                        borderTopRightRadius: 2,
+                        color: 'otherColors.gray',
+                        fontFamily: 'Gruppo',
+                        fontWeight: 'bold'
                     }
                 }}
             />
             {
                 searchedUsers.length > 0 && <List
                     sx={{
-                        bgcolor: '#271e36',
-                        boxShadow: '0px 0px 2px 0px black',
+                        bgcolor: 'primary.light',
+                        boxShadow: '#091e4240 0px 1px 1px, #091e4221 0px 0px 1px 1px',
                         borderTop: '1px solid #edebeb',
                         borderBottomLeftRadius: 15,
                         borderBottomRightRadius: 15,
@@ -83,7 +86,8 @@ const FollowRecommendationSection = () => {
                                 sx={{
                                     cursor: 'pointer',
                                     '&:hover': {
-                                        bgcolor: 'otherColors.mediumPurple'
+                                        bgcolor: 'primary.main',
+                                        borderRadius: '0.5rem'
                                     }
                                 }}>
                                 <ListItemAvatar>
@@ -94,10 +98,14 @@ const FollowRecommendationSection = () => {
                                     secondary={`@${user.userName}`}
                                     sx={{
                                         '& .MuiListItemText-primary': {
-                                            color: 'otherColors.white'
+                                            color: 'secondary.main',
+                                            fontFamily: 'Gruppo',
+                                            fontWeight: 'bold'
                                         },
                                         '& .MuiListItemText-secondary': {
-                                            color: 'otherColors.lightGray'
+                                            color: 'otherColors.gray',
+                                            fontFamily: 'Gruppo',
+                                            fontWeight: 'bold'
                                         }
                                     }} />
                             </ListItem>
