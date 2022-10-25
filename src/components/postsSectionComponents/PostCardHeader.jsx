@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { deletePost } from "../../redux/features/post/postSlice";
@@ -15,27 +16,31 @@ const PostCardHeader = ({ post, comment }) => {
     const { encodedToken } = useSelector((store) => store.auth);
     const { loggedInUser } = useSelector((store) => store.user);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     return (
         <CardHeader
-            sx={cardHeader}
+            sx={{ ...cardHeader, cursor: 'pointer' }}
             avatar={
                 <Avatar
                     alt="AB"
                     src={post ? post.profilePic : comment.profilePic}
                     sx={cardAvatar} />
             }
+            onClick={() => navigate(`/post/${post._id}`)}
             action={
                 post && <IconButton
                     sx={cardOptionIcon}
                     onClick={
-                        () =>
+                        (e) => {
                             dispatchOfPostCard(
                                 {
                                     type: "OPTIONS_POPUP",
                                     payload: post._id
                                 }
                             )
+                            e.stopPropagation();
+                        }
                     }>
                     <Box
                         sx={{
