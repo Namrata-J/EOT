@@ -4,4 +4,5 @@ export { ExplorePage } from "./Explore";
 export { BookmarkPage } from "./Bookmark";
 export { NotificationPage } from "./Notification";
 export { ProfilePage } from "./Profile";
+export { SinglePostListingPage } from "./SinglePostListing";
 export * as Auth from "./auth/";
