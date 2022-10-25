@@ -17,6 +17,7 @@ const NotificationPage = () => {
                     }}>
                     <Typography sx={{
                         textAlign: 'center',
+                        color: 'otherColors.gray',
                         pt: 10,
                         fontSize: { xs: '1rem', md: '1.2rem' }
                     }}>

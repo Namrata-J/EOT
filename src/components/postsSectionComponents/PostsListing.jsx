@@ -48,6 +48,7 @@ const PostsListing = () => {
                         filteredPosts?.map((post, index) => <PostCard key={index} {...post} />) :
                         bookmarks?.length === 0 ?
                             <Typography sx={{
+                                color: 'otherColors.gray',
                                 textAlign: 'center',
                                 pt: 10,
                                 fontSize: { xs: '1rem', md: '1.2rem' }
