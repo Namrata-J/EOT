@@ -87,7 +87,10 @@ const PostCardActions = ({ post }) => {
                                                     postId: post._id,
                                                     encodedToken: encodedToken
                                                 }
-                                            )) : ""
+                                            )) : (
+                                                navigator.clipboard.writeText(window.location.origin + `/post/${post._id}`),
+                                                alert("Link copied")
+                                            )
                         }>
                         <Typography
                             sx={{
