@@ -1,6 +1,6 @@
 import { RequiresAuth } from "../components/";
 import { Routes, Route } from "react-router-dom";
-import { LandingPage, HomePage, ExplorePage, BookmarkPage, NotificationPage, ProfilePage, Auth, SinglePostListingPage } from "../screens/";
+import { LandingPage, HomePage, ExplorePage, BookmarkPage, NotificationPage, ProfilePage, Auth, SinglePostListingPage, NoRoutesMatchPage } from "../screens/";
 
 const RouteComp = () => {
     return (
@@ -16,6 +16,7 @@ const RouteComp = () => {
                 <Route path="/signup" element={<Auth.SignUpPage />} />
                 <Route path="/login" element={<Auth.LogInPage />} />
                 <Route path="/logout" element={<Auth.LogOutPage />} />
+                <Route path="*" element={<NoRoutesMatchPage />} />
             </Routes>
         </div>
     );
