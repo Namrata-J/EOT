@@ -5,4 +5,5 @@ export { BookmarkPage } from "./Bookmark";
 export { NotificationPage } from "./Notification";
 export { ProfilePage } from "./Profile";
 export { SinglePostListingPage } from "./SinglePostListing";
+export { NoRoutesMatchPage } from "./NoRoutesMatch";
 export * as Auth from "./auth/";
