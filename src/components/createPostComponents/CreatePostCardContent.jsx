@@ -23,12 +23,13 @@ const CreatePostCardContent = ({ btnType }) => {
                     mode === 'light' ? {
                         ...input,
                         ...textArea,
+                        color: '#000000',
                         fontSize: '1rem'
                     } :
                         {
                             ...input,
                             ...textArea,
-                            color: '#ffffff',
+                            color: '#9e9e9e',
                             fontWeight: 'light',
                             fontSize: '1rem'
                         }
