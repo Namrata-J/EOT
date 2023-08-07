@@ -19,6 +19,15 @@ EOT is a social media platform, a SPA application meant for the users to exchang
 - Profile
 - Authentication Sreens
 
+#### Features
+- Authentication with the required field & regex validations and guest login feature
+- create Post with emoji and upload images integration.
+- user feed with follow/unfollow, comment, share link, bookmark/unbookmark a post
+- user profile with details of the user. Edit profile, edit/delete any post
+- upvote/downvote comments. Edit/delete your own comments
+- 404 page, filter functionality on posts
+- Search functionality using debouncing
+
 #### Functionalities
 #### Landing Page
 ![image](https://user-images.githubusercontent.com/82696858/183966138-c43dece9-f72c-42ac-9ff3-fa40b149f434.png)
